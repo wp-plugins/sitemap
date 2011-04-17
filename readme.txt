@@ -18,7 +18,7 @@ Plugin is based on [wp_list_pages('sort_column=menu_order&title_li=')](http://co
 
 [WordPress stuff](http://web-profile.com.ua/wordpress/)
 
-== Change Log ==
+== Changelog ==
 
 = 1.0.0 =
 * Initial release;
