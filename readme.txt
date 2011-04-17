@@ -8,7 +8,7 @@ Requires at least: 3.0
 Tested up to: 3.1.1
 Stable tag: 1.0.0
 
-"Sitemap" plugin helps you show sitemap of your sist (tree of pages) with [sitemap] shortcode.
+"Sitemap" plugin helps you show sitemap of your site (tree of pages) with [sitemap] shortcode.
 
 == Description ==
 
