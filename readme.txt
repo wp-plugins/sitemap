@@ -35,5 +35,5 @@ Plugin is based on [wp_list_pages('sort_column=menu_order&title_li=')](http://co
 == Installation ==
 
 1. Install plugin and activate it on the Plugins page;
-2. Add shortcode [sitemap] to page content;
+2. Add shortcode **`[sitemap]`** to page content;
 
