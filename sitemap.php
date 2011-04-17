@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/sitemap/
 Description: Show sitemap with [sitemap] shortcode.
-Version: 1.0.0
+Version: 1.1.0
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/
@@ -15,9 +15,11 @@ function sitemap_shortcode( $atts ) {
 		'child_of' => '0',
 		'exclude' => '0'
 	), $atts ) );
-	
+	global $post;
 	$return = '';
-	
+	if( $child_of == 'current' || $child_of == 'this' ){
+		$child_of = $post->ID;
+	}
 	$list_pages_args = array(
 	'depth'        => $depth,
 	'show_date'    => '',
@@ -35,7 +37,11 @@ function sitemap_shortcode( $atts ) {
 	
 	$list_pages = wp_list_pages( $list_pages_args );
 	
-	$return = '<ul>'.$list_pages.'</ul>';
+	if ($list_pages) {
+		$return = '<ul>'.$list_pages.'</ul>';
+	}else{
+		$return = '';
+	}
 	
 	return $return;
 }
