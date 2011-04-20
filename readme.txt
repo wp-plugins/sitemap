@@ -14,7 +14,9 @@ Stable tag: 1.1.0
 
 You can use aditional parameters: **`[sitemap depth="2" child_of="4" exclude="6,7,8"]`**.
 
-Plugin is based on [wp_list_pages('sort_column=menu_order&title_li=')](http://codex.wordpress.org/Template_Tags/wp_list_pages) function;
+Code moved to [page-list plugin](http://wordpress.org/extend/plugins/page-list/).
+
+Plugin is based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Template_Tags/wp_list_pages) function;
 = Usage: =
 * the depth (how many levels in the hierarchy of pages are to be included in the list) by default is unlimited, but you can specify it like this: `[sitemap depth="3"]`;
 * if you want to show flat list of pages (not hierarchical tree) you can use this shortcode: `[sitemap depth="-1"]`;
@@ -36,4 +38,3 @@ Plugin is based on [wp_list_pages('sort_column=menu_order&title_li=')](http://co
 
 1. Install plugin and activate it on the Plugins page;
 2. Add shortcode **`[sitemap]`** to page content;
-
