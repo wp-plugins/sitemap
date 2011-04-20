@@ -38,4 +38,3 @@ Plugin is based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Templ
 
 1. Install plugin and activate it on the Plugins page;
 2. Add shortcode **`[sitemap]`** to page content;
-
