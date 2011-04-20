@@ -17,7 +17,6 @@ function sitemap_shortcode( $atts ) {
 	), $atts ) );
 	
 	$return = '';
-	
 	$list_pages_args = array(
 	'depth'        => $depth,
 	'show_date'    => '',
