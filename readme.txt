@@ -24,7 +24,9 @@ Plugin is based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Templ
 
 [WordPress stuff](http://web-profile.com.ua/wordpress/)
 
-== Documentation ==
+== Other Notes ==
+
+= Documentation =
 
 Plugin is based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Template_Tags/wp_list_pages) function;
 You can use aditional parameters: **`[pagelist depth="2" child_of="4" exclude="6,7,8"]`**.
