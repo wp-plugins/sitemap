@@ -8,7 +8,7 @@ Requires at least: 3.0
 Tested up to: 3.1.1
 Stable tag: 1.2.0
 
-"Page-list" plugin helps you to show list of pages with [sitemap], [pagelist], [subpages] and [siblings] shortcodes.
+"Sitemap" plugin helps you to show list of pages with [sitemap], [pagelist], [subpages] and [siblings] shortcodes.
 
 == Description ==
 
