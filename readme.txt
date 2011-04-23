@@ -1,4 +1,4 @@
-=== Page-list ===
+=== Sitemap ===
 Contributors: webvitaly
 Donate link: http://web-profile.com.ua/wordpress/plugins/page-list/
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
