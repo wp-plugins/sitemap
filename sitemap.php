@@ -3,13 +3,15 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: Show list of pages with [pagelist], [subpages] and [siblings] shortcodes.
-Version: 1.2.0
+Version: 1.3.0
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/
 
 Future features:
 - exclude_by_alias;
+- exclude_front_page;
+- exclude_post_page;
 - [parents];
 */
 
@@ -33,6 +35,7 @@ if ( !function_exists('pagelist_shortcode') ) {
 			'sort_order' => 'ASC',
 			'link_before' => '',
 			'link_after' => '',
+			'class' => ''
 		), $atts ) );
 		
 		if( $child_of == 'current' || $child_of == 'this' ){
@@ -66,7 +69,7 @@ if ( !function_exists('pagelist_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = '<ul>'.$list_pages.'</ul>';
+			$return = '<ul class="page-list '.$class.'">'.$list_pages.'</ul>';
 		}else{
 			$return = '';
 		}
@@ -97,6 +100,7 @@ if ( !function_exists('subpages_shortcode') ) {
 			'sort_order' => 'ASC',
 			'link_before' => '',
 			'link_after' => '',
+			'class' => ''
 		), $atts ) );
 		
 		$page_list_args = array(
@@ -123,7 +127,7 @@ if ( !function_exists('subpages_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = '<ul>'.$list_pages.'</ul>';
+			$return = '<ul class="page-list subpages-page-list '.$class.'">'.$list_pages.'</ul>';
 		}else{
 			$return = '';
 		}
@@ -154,6 +158,7 @@ if ( !function_exists('siblings_shortcode') ) {
 			'sort_order' => 'ASC',
 			'link_before' => '',
 			'link_after' => '',
+			'class' => ''
 		), $atts ) );
 		
 		$page_list_args = array(
@@ -180,7 +185,7 @@ if ( !function_exists('siblings_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = '<ul>'.$list_pages.'</ul>';
+			$return = '<ul class="page-list siblings-page-list '.$class.'">'.$list_pages.'</ul>';
 		}else{
 			$return = '';
 		}
