@@ -1,11 +1,10 @@
 === Sitemap ===
 Contributors: webvitaly
-Donate link: http://web-profile.com.ua/wordpress/plugins/page-list/
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
-Tags: page, page-list, pagelist, sitemap
+Tags: page, page-list, pagelist, sitemap, subpages
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
-Tested up to: 3.1.2
+Tested up to: 3.2
 Stable tag: 1.3.0
 
 "Sitemap" plugin helps you to show list of pages with [sitemap], [pagelist], [subpages] and [siblings] shortcodes.
@@ -21,6 +20,8 @@ Plugin is based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Templ
 * show hierarchical tree of pages: `[pagelist]`;
 * show hierarchical tree of subpages: `[subpages]`;
 * show hierarchical tree of sibling pages: `[siblings]`;
+
+[Sitemap plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
 [WordPress stuff](http://web-profile.com.ua/wordpress/)
 
