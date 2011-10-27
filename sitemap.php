@@ -3,16 +3,16 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: Show list of pages with [pagelist], [subpages] and [siblings] shortcodes.
-Version: 1.3.0
+Version: 1.4
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
-Author URI: http://web-profile.com.ua/
+Author URI: http://web-profile.com.ua/wordpress/
 
 Future features:
+- add support exclude="current,5";
 - exclude_by_alias;
 - exclude_front_page;
 - exclude_post_page;
-- [parents];
 */
 
 if ( !function_exists('pagelist_shortcode') ) {
@@ -44,6 +44,9 @@ if ( !function_exists('pagelist_shortcode') ) {
 		if( $child_of == 'parent' ){
 			$child_of = $post->post_parent;
 		}
+		if( $exclude == 'current' || $exclude == 'this' ){
+			$exclude = $post->ID;
+		}
 		
 		$page_list_args = array(
 			'depth'        => $depth,
@@ -69,7 +72,8 @@ if ( !function_exists('pagelist_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = '<ul class="page-list '.$class.'">'.$list_pages.'</ul>';
+			$return = "\n".'<!-- powered by Page-list plugin ver. 1.4 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return .= '<ul class="page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
 		}
@@ -127,7 +131,8 @@ if ( !function_exists('subpages_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = '<ul class="page-list subpages-page-list '.$class.'">'.$list_pages.'</ul>';
+			$return = "\n".'<!-- powered by Page-list plugin ver. 1.4 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return .= '<ul class="page-list subpages-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
 		}
@@ -161,6 +166,10 @@ if ( !function_exists('siblings_shortcode') ) {
 			'class' => ''
 		), $atts ) );
 		
+		if( $exclude == 'current' || $exclude == 'this' ){
+			$exclude = $post->ID;
+		}
+		
 		$page_list_args = array(
 			'depth'        => $depth,
 			'child_of'     => $post->post_parent,
@@ -185,7 +194,8 @@ if ( !function_exists('siblings_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = '<ul class="page-list siblings-page-list '.$class.'">'.$list_pages.'</ul>';
+			$return = "\n".'<!-- powered by Page-list plugin ver. 1.4 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return .= '<ul class="page-list siblings-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
 		}

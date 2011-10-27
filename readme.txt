@@ -4,10 +4,10 @@ Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Tags: page, page-list, pagelist, sitemap, subpages
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
-Tested up to: 3.2
-Stable tag: 1.3.0
+Tested up to: 3.3
+Stable tag: 1.4
 
-"Sitemap" plugin helps you to show list of pages with [sitemap], [pagelist], [subpages] and [siblings] shortcodes.
+"Sitemap" plugin helps you to show list of pages with [pagelist], [subpages] and [siblings] shortcodes.
 
 == Description ==
 
@@ -23,7 +23,7 @@ Plugin is based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Templ
 
 [Sitemap plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
-[WordPress stuff](http://web-profile.com.ua/wordpress/)
+[CMS WordPress](http://web-profile.com.ua/wordpress/)
 
 == Other Notes ==
 
@@ -39,7 +39,7 @@ Shortcodes [pagelist], [subpages] and [siblings] accept the same parameters. The
 * if you want to show subpages of the specific page you can use this shortcode: `[pagelist child_of="4"]` where `4` is the ID of the specific page;
 * if you want to show subpages of the current page you can use this shortcodes: `[subpages]` or `[pagelist child_of="current"]` or `[pagelist child_of="this"]`;
 * if you want to show sibling pages of the current page you can use this shortcodes: `[siblings]` or `[pagelist child_of="parent"]`;
-* if you want to exclude some pages from the list you can use this shortcode: `[pagelist exclude="6,7,8"]` where `exclude` parameter accepts comma-separated list of Page IDs;
+* if you want to exclude some pages from the list you can use this shortcode: `[pagelist exclude="6,7,8"]` where `exclude` parameter accepts comma-separated list of Page IDs; You may exclude current page with this shortcode: `[pagelist exclude="current"]`;
 * if you want to exclude the tree of pages from the list you can use this shortcode: `[pagelist exclude_tree="7,10"]` where `exclude_tree` parameter accepts comma-separated list of Page IDs (all this pages and their subpages will be excluded);
 * if you want to include certain pages into the list of pages you can use this shortcode: `[pagelist include="6,7,8"]` where `include` parameter accepts comma-separated list of Page IDs;
 * if you want to specify the title of the list of pages you can use this shortcode: `[pagelist title_li="<h2>List of pages</h2>"]`; by default there is no title (title_li="");
@@ -55,16 +55,15 @@ Shortcodes [pagelist], [subpages] and [siblings] accept the same parameters. The
 
 == Changelog ==
 
+= 1.4 =
+* Added exclude="current" parameter;
+
 = 1.3.0 =
 * Added class to ul elements by default;
 * Added "class" option (thanks to Arvind);
 
 = 1.2.0 =
 * Added [subpages] and [siblings] shortcodes;
-
-= 1.1.0 =
-* Added "child_of=current" option;
-* Improving documentation;
 
 = 1.0.0 =
 * Initial release;
