@@ -21,7 +21,7 @@ Shortcode [pagelist_image] is based on functions;
 * show hierarchical tree of pages: `[pagelist]`;
 * show hierarchical tree of subpages: `[subpages]`;
 * show hierarchical tree of sibling pages: `[siblings]`;
-* show lisp of pages with featured image: `[pagelist_image]`;
+* show list of pages with featured images: `[pagelist_image]`;
 
 [Page-list plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
