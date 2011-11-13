@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.5
+Stable tag: 1.6
 
 "Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -57,6 +57,10 @@ Shortcode [pagelist_ext] accept the same parameters.
 * **class** - if you want to specify the CSS class for list of pages you can use this shortcode: `[pagelist class="listclass"]`; by default the class is empty (class="");
 
 = Parameters for [pagelist_ext]: =
+* **show_image** - show or hide featured image `[pagelist_ext show_image="0"]`; by default: show_image="1";
+* **show_title** - show or hide title `[pagelist_ext show_title="0"]`; by default: show_title="1";
+* **show_content** - show or hide content `[pagelist_ext show_content="0"]`; by default: show_content="1";
+* **limit_content** - content is limited by "more-tag" if it is exist or by "limit_content" parameter `[pagelist_ext limit_content="100"]`; by default: limit_content="250";
 * **image_width** - width of the image `[pagelist_ext image_width="80"]`; by default: image_width="40";
 * **image_height** - height of the image `[pagelist_ext image_height="80"]`; by default: image_height="40";
 * **child_of** - if you want to show subpages of the specific page you can use this shortcode: `[pagelist_ext child_of="4"]` where `4` is the ID of the specific page; by default it shows subpages to the current page;
@@ -77,6 +81,9 @@ Shortcode [pagelist_ext] accept the same parameters.
 
 
 == Changelog ==
+
+= 1.6 =
+* Improved [pagelist_ext] shortcode: added content to list, added toggle show and limit content parameters;
 
 = 1.5 =
 * Added [pagelist_ext] shortcode - list of pages with featured image;
