@@ -97,4 +97,4 @@ Shortcode [pagelist_ext] accept the same parameters.
 == Installation ==
 
 1. Install plugin and activate it on the Plugins page;
-2. Add shortcode `[pagelist]`, `[subpages]` or `[siblings]` to page content;
+2. Add shortcode `[pagelist]`, `[subpages]`, `[siblings]` or `[pagelist_ext]` to page content;
