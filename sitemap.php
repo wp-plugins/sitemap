@@ -265,16 +265,16 @@ if ( !function_exists('page_list_image_shortcode') ) {
 			$link = get_permalink( $page->ID );
 			$list_pages_html .= '<li>';
 			if( get_the_post_thumbnail($page->ID) ){
-				$list_pages_html .= '<span class="page-list-image-item"><a href="'.$link.'" title="'.$page->post_title.'">';
+				$list_pages_html .= '<span class="page-list-ext-item"><a href="'.$link.'" title="'.$page->post_title.'">';
 				$list_pages_html .= get_the_post_thumbnail($page->ID, array($image_width,$image_height));
 				$list_pages_html .= '</a></span> ';
 			}
-			$list_pages_html .= '<span class="page-list-image-link-item"><a class="page-list-image-item-link" href="'.$link.'" title="'.$page->post_title.'">'.$page->post_title.'</a></span>';
+			$list_pages_html .= '<span class="page-list-ext-link-item"><a href="'.$link.'" title="'.$page->post_title.'">'.$page->post_title.'</a></span>';
 			$list_pages_html .= '</li>'."\n";
 		}
 		if ($list_pages_html) {
 			$return = "\n".'<!-- powered by Page-list plugin ver.1.5 (wordpress.org/extend/plugins/page-list/) -->'."\n";
-			$return .= '<ul class="page-list page-list-image '.$class.'">'."\n".$list_pages_html."\n".'</ul>';
+			$return .= '<ul class="page-list page-list-ext '.$class.'">'."\n".$list_pages_html."\n".'</ul>';
 		}else{
 			$return = '';
 		}
