@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: Show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
-Version: 1.6
+Version: 1.7
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -17,7 +17,7 @@ Future features:
 
 add_action('wp_print_styles', 'page_list_add_stylesheet');
 function page_list_add_stylesheet() {
-	wp_enqueue_style( 'my-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '1.6', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '1.7', 'all' );
 }
 
 if ( !function_exists('pagelist_shortcode') ) {
@@ -77,7 +77,7 @@ if ( !function_exists('pagelist_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.1.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.1.7 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<ul class="page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
@@ -137,7 +137,7 @@ if ( !function_exists('subpages_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.1.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.1.7 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<ul class="page-list subpages-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
@@ -201,7 +201,7 @@ if ( !function_exists('siblings_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.1.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.1.7 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<ul class="page-list siblings-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
@@ -237,7 +237,8 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'offset' => 0,
 			'post_type' => 'page',
 			'post_status' => 'publish',
-			'class' => ''
+			'class' => '',
+			'strip_tags' => 1
 		), $atts ) );
 		
 		if( $child_of == 'current' || $child_of == 'this' || $child_of == '0' ){
@@ -270,7 +271,8 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'offset' => $offset,
 			'post_type' => $post_type,
 			'post_status' => $post_status,
-			'class' => $class
+			'class' => $class,
+			'strip_tags' => $strip_tags
 		);
 		$list_pages = get_pages( $page_list_image_args );
 		$list_pages_html = '';
@@ -290,7 +292,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			if( $show_content == 1 ){
 				$content = apply_filters('the_content', $page->post_content);
 				$content = str_replace(']]>', ']]&gt;', $content);
-				$content = page_list_parse_content( $page->post_content, $limit_content );
+				$content = page_list_parse_content( $page->post_content, $limit_content, $strip_tags );
 				
 				$list_pages_html .= '<div class="page-list-ext-item-content">'.$content.'</div>';
 			}
@@ -298,7 +300,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			$list_pages_html .= '</div>'."\n";
 		}
 		if ($list_pages_html) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.1.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.1.7 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<div class="page-list page-list-ext '.$class.'">'."\n".$list_pages_html."\n".'</div>';
 		}else{
 			$return = '';
@@ -310,7 +312,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 
 
 if ( !function_exists('page_list_parse_content') ) {
-	function page_list_parse_content($content, $limit_content = 250) {
+	function page_list_parse_content($content, $limit_content = 250, $strip_tags = 1) {
 		global $more, $preview;
 		
 		$output = '';
@@ -319,8 +321,12 @@ if ( !function_exists('page_list_parse_content') ) {
 			$content = explode($matches[0], $content, 2);
 			
 		} else {
-			//$content_stripped = strip_tags($content); // ,'<p>'
-			$content_stripped = $content;
+			if( $strip_tags ){
+				$content_stripped = strip_tags($content); // ,'<p>'
+			}else{
+				$content_stripped = $content;
+			}
+			
 			if( strlen($content_stripped) > $limit_content ){
 				$pos = strpos($content_stripped, ' ', $limit_content);
 				if ($pos !== false) {

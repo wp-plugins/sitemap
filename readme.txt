@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.6
+Stable tag: 1.7
 
 "Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -78,9 +78,12 @@ Shortcode [pagelist_ext] accept the same parameters.
 * **post_type** - `[pagelist_ext post_type="page"]`;
 * **post_status** - `[pagelist_ext post_status="publish"]`;
 * **class** - if you want to specify the CSS class for list of pages you can use this shortcode: `[pagelist_ext class="listclass"]`; by default the class is empty (class="");
-
+* **strip_tags** - if you want to output the content with tags use this shortcode: `[pagelist_ext strip_tags="0"]`; by default the strip_tags is enabled (strip_tags="1");
 
 == Changelog ==
+
+= 1.7 =
+* Added strip_tags parameter;
 
 = 1.6 =
 * Improved [pagelist_ext] shortcode: added content to list, added toggle show and limit content parameters;
