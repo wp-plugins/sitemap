@@ -21,7 +21,7 @@ Shortcode [pagelist_ext] is based on functions;
 * show hierarchical tree of pages: `[pagelist]`;
 * show hierarchical tree of subpages: `[subpages]`;
 * show hierarchical tree of sibling pages: `[siblings]`;
-* show list of pages with featured images: `[pagelist_ext]`;
+* show list of pages with featured images and with excerpt: `[pagelist_ext]`;
 
 [Page-list plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
@@ -31,11 +31,11 @@ Shortcode [pagelist_ext] is based on functions;
 
 = Documentation =
 
-Shortcodes [pagelist], [subpages], [siblings] are based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Template_Tags/wp_list_pages) function;
+Shortcodes [pagelist], [subpages], [siblings] are based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Template_Tags/wp_list_pages) function and show hierarchical tree of pages;
 You can use aditional parameters: **`[pagelist depth="2" child_of="4" exclude="6,7,8"]`**.
 Shortcodes [pagelist], [subpages] and [siblings] accept the same parameters. The only difference is that [subpages] and [siblings] not accept  `child_of` parameter, because [subpages] shows subpages to the current page and [siblings] shows subpages to the parent page.
 
-Shortcode [pagelist_ext] is based on [get_pages()](http://codex.wordpress.org/Function_Reference/get_pages) function;
+Shortcode [pagelist_ext] is based on [get_pages()](http://codex.wordpress.org/Function_Reference/get_pages) function and show list of pages with featured image and with excerpt;
 You can use aditional parameters: **`[pagelist child_of="4" exclude="6,7,8" image_width="50" image_height="50"]`**.
 Shortcode [pagelist_ext] accept the same parameters.
 
