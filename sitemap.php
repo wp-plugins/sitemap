@@ -2,7 +2,7 @@
 /*
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
-Description: Show list of pages with [pagelist], [subpages], [siblings] and [pagelist_image] shortcodes.
+Description: Show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 Version: 1.6
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
@@ -17,7 +17,7 @@ Future features:
 
 add_action('wp_print_styles', 'page_list_add_stylesheet');
 function page_list_add_stylesheet() {
-	wp_enqueue_style( 'my-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '1.5', 'all' );
+	wp_enqueue_style( 'my-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '1.6', 'all' );
 }
 
 if ( !function_exists('pagelist_shortcode') ) {
