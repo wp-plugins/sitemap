@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.7
+Stable tag: 1.8
 
 "Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -21,7 +21,7 @@ Shortcode [pagelist_ext] is based on functions;
 * show hierarchical tree of pages: `[pagelist]`;
 * show hierarchical tree of subpages: `[subpages]`;
 * show hierarchical tree of sibling pages: `[siblings]`;
-* show list of pages with featured images and with excerpt: `[pagelist_ext]`;
+* show list of pages with featured image and with excerpt: `[pagelist_ext]`;
 
 [Page-list plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
@@ -61,8 +61,8 @@ Shortcode [pagelist_ext] accept the same parameters.
 * **show_title** - show or hide title `[pagelist_ext show_title="0"]`; by default: show_title="1";
 * **show_content** - show or hide content `[pagelist_ext show_content="0"]`; by default: show_content="1";
 * **limit_content** - content is limited by "more-tag" if it is exist or by "limit_content" parameter `[pagelist_ext limit_content="100"]`; by default: limit_content="250";
-* **image_width** - width of the image `[pagelist_ext image_width="80"]`; by default: image_width="40";
-* **image_height** - height of the image `[pagelist_ext image_height="80"]`; by default: image_height="40";
+* **image_width** - width of the image `[pagelist_ext image_width="80"]`; by default: image_width="50";
+* **image_height** - height of the image `[pagelist_ext image_height="80"]`; by default: image_height="50";
 * **child_of** - if you want to show subpages of the specific page you can use this shortcode: `[pagelist_ext child_of="4"]` where `4` is the ID of the specific page; by default it shows subpages to the current page;
 * **parent** - if you want to show subpages of the specific page only you can use this shortcode: `[pagelist_ext parent="4"]` where `4` is the ID of the specific page and the depth will be only one level; by default parent="-1" and depth is unlimited;
 * **sort_order** - if you want to change the sort order of the list of pages (either ascending or descending) you can use this shortcode: `[pagelist_ext sort_order="desc"]`; by default: sort_order="asc"; you can use this values for `sort_order` parameter: asc, desc;
@@ -80,7 +80,16 @@ Shortcode [pagelist_ext] accept the same parameters.
 * **class** - if you want to specify the CSS class for list of pages you can use this shortcode: `[pagelist_ext class="listclass"]`; by default the class is empty (class="");
 * **strip_tags** - if you want to output the content with tags use this shortcode: `[pagelist_ext strip_tags="0"]`; by default the strip_tags is enabled (strip_tags="1");
 
+== Screenshots ==
+
+1. [pagelist] shortcode;
+2. [pagelist_ext] shortcode;
+
 == Changelog ==
+
+= 1.7 =
+* Added screenshots;
+* Improved parameter parsing;
 
 = 1.7 =
 * Added strip_tags parameter;
