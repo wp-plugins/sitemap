@@ -87,7 +87,7 @@ Shortcode [pagelist_ext] accept the same parameters.
 
 == Changelog ==
 
-= 1.7 =
+= 1.8 =
 * Added screenshots;
 * Improved parameter parsing;
 
