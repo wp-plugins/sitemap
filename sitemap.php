@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: Show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
-Version: 2.0
+Version: 2.1
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -16,7 +16,7 @@ Future features:
 
 add_action('wp_print_styles', 'page_list_add_stylesheet');
 function page_list_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '2.0', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '2.1', 'all' );
 }
 
 if ( !function_exists('pagelist_norm_params') ) {
@@ -78,7 +78,7 @@ if ( !function_exists('pagelist_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.2.0 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.2.1 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<ul class="page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
@@ -138,7 +138,7 @@ if ( !function_exists('subpages_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.2.0 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.2.1 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<ul class="page-list subpages-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
@@ -202,7 +202,7 @@ if ( !function_exists('siblings_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.2.0 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.2.1 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<ul class="page-list siblings-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
@@ -268,7 +268,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'authors' => $authors,
 			'parent' => $parent,
 			'exclude_tree' => $exclude_tree,
-			'number' => $number,
+			'number' => '', // $number - own counter
 			'offset' => $offset,
 			'post_type' => $post_type,
 			'post_status' => $post_status,
@@ -281,57 +281,61 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 		);
 		$list_pages = get_pages( $page_list_ext_args );
 		$list_pages_html = '';
+		$count = 0;
 		foreach($list_pages as $page){
-			$link = get_permalink( $page->ID );
-			$list_pages_html .= '<div class="page-list-ext-item">';
-			if( $show_image == 1 ){
-				if (function_exists('get_the_post_thumbnail')) {
-					if( get_the_post_thumbnail($page->ID) ){
-						$list_pages_html .= '<div class="page-list-ext-image"><a href="'.$link.'" title="'.$page->post_title.'">';
-						$list_pages_html .= get_the_post_thumbnail($page->ID, array($image_width,$image_height));
-						$list_pages_html .= '</a></div> ';
+			$count++;
+			if ( ( !empty( $number ) && is_numeric( $number ) && $count <= $number ) || ( empty( $number ) ) || ( !empty( $number ) && !is_numeric( $number ) ) ) {
+				$link = get_permalink( $page->ID );
+				$list_pages_html .= '<div class="page-list-ext-item">';
+				if( $show_image == 1 ){
+					if (function_exists('get_the_post_thumbnail')) {
+						if( get_the_post_thumbnail($page->ID) ){
+							$list_pages_html .= '<div class="page-list-ext-image"><a href="'.$link.'" title="'.$page->post_title.'">';
+							$list_pages_html .= get_the_post_thumbnail($page->ID, array($image_width,$image_height));
+							$list_pages_html .= '</a></div> ';
+						}
 					}
 				}
-			}
-			if( $show_title == 1 ){
-				$list_pages_html .= '<h3 class="page-list-ext-title"><a href="'.$link.'" title="'.$page->post_title.'">'.$page->post_title.'</a></h3>';
-			}
-			if( $show_content == 1 ){
-				//$content = apply_filters('the_content', $page->post_content);
-				//$content = str_replace(']]>', ']]&gt;', $content);
-				$content = page_list_parse_content( $page->post_content, $limit_content, $strip_tags );
-				$list_pages_html .= '<div class="page-list-ext-item-content">'.$content.'</div>';
-			}
-			if( $show_child_count == 1 ){
-				$count_subpages = count(get_pages("child_of=".$page->ID));
-				if( $count_subpages > 0 ){ // hide empty
-					$child_count_pos = strpos($child_count_template, '%child_count%'); // check if we have %child_count% marker in template
-					if($child_count_pos === false) { // %child_count% not found in template
-						$child_count_template_html =  $child_count_template.' '.$count_subpages;
-						$list_pages_html .= '<div class="page-list-ext-child-count">'.$child_count_template_html.'</div>';
-					} else { // %child_count% found in template
-						$child_count_template_html =  str_replace('%child_count%', $count_subpages, $child_count_template);
-						$list_pages_html .= '<div class="page-list-ext-child-count">'.$child_count_template_html.'</div>';
+				if( $show_title == 1 ){
+					$list_pages_html .= '<h3 class="page-list-ext-title"><a href="'.$link.'" title="'.$page->post_title.'">'.$page->post_title.'</a></h3>';
+				}
+				if( $show_content == 1 ){
+					//$content = apply_filters('the_content', $page->post_content);
+					//$content = str_replace(']]>', ']]&gt;', $content);
+					$content = page_list_parse_content( $page->post_content, $limit_content, $strip_tags );
+					$list_pages_html .= '<div class="page-list-ext-item-content">'.$content.'</div>';
+				}
+				if( $show_child_count == 1 ){
+					$count_subpages = count(get_pages("child_of=".$page->ID));
+					if( $count_subpages > 0 ){ // hide empty
+						$child_count_pos = strpos($child_count_template, '%child_count%'); // check if we have %child_count% marker in template
+						if($child_count_pos === false) { // %child_count% not found in template
+							$child_count_template_html =  $child_count_template.' '.$count_subpages;
+							$list_pages_html .= '<div class="page-list-ext-child-count">'.$child_count_template_html.'</div>';
+						} else { // %child_count% found in template
+							$child_count_template_html =  str_replace('%child_count%', $count_subpages, $child_count_template);
+							$list_pages_html .= '<div class="page-list-ext-child-count">'.$child_count_template_html.'</div>';
+						}
 					}
 				}
-			}
-			if( $show_meta_key != '' ){
-				$post_meta = get_post_meta($page->ID, $show_meta_key, true);
-				if( !empty($post_meta) ){ // hide empty
-					$meta_pos = strpos($meta_template, '%meta%'); // check if we have %meta% marker in template
-					if($meta_pos === false) { // %meta% not found in template
-						$meta_template_html =  $meta_template.' '.$post_meta;
-						$list_pages_html .= '<div class="page-list-ext-meta">'.$meta_template_html.'</div>';
-					} else { // %meta% found in template
-						$meta_template_html =  str_replace('%meta%', $post_meta, $meta_template);
-						$list_pages_html .= '<div class="page-list-ext-meta">'.$meta_template_html.'</div>';
+				if( $show_meta_key != '' ){
+					$post_meta = get_post_meta($page->ID, $show_meta_key, true);
+					if( !empty($post_meta) ){ // hide empty
+						$meta_pos = strpos($meta_template, '%meta%'); // check if we have %meta% marker in template
+						if($meta_pos === false) { // %meta% not found in template
+							$meta_template_html =  $meta_template.' '.$post_meta;
+							$list_pages_html .= '<div class="page-list-ext-meta">'.$meta_template_html.'</div>';
+						} else { // %meta% found in template
+							$meta_template_html =  str_replace('%meta%', $post_meta, $meta_template);
+							$list_pages_html .= '<div class="page-list-ext-meta">'.$meta_template_html.'</div>';
+						}
 					}
 				}
+				$list_pages_html .= '</div>'."\n";
 			}
-			$list_pages_html .= '</div>'."\n";
 		}
 		if ($list_pages_html) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.2.0 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.2.1 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<div class="page-list page-list-ext '.$class.'">'."\n".$list_pages_html."\n".'</div>';
 		}else{
 			$return = '';
