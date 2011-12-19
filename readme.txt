@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 1.9
+Stable tag: 2.0
 
 "Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -28,7 +28,7 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 * show hierarchical tree of sibling pages: `[siblings]`;
 * show list of pages with featured image and with excerpt: `[pagelist_ext]`;
 
-[Sitemap plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
+[Page-list plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
 [CMS WordPress](http://web-profile.com.ua/wordpress/)
 
@@ -85,6 +85,9 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 2. [pagelist_ext] shortcode;
 
 == Changelog ==
+
+= 2.0 =
+* Fixed crash bug with [pagelist_ext] if theme does not have thumbnail feature;
 
 = 1.9 =
 * Added show_child_count parameter;
