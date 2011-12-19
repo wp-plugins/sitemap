@@ -86,9 +86,6 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 
 == Changelog ==
 
-= 2.2 =
-* Fixed offset parameter;
-
 = 2.1 =
 * Fixed number parameter;
 
