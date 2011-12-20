@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 2.2
+Stable tag: 2.3
 
 "Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -85,6 +85,9 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 2. [pagelist_ext] shortcode;
 
 == Changelog ==
+
+= 2.3 =
+* Fixed [pagelist_ext] with showing excerpt of the page if it is not empty, else showing content;
 
 = 2.2 =
 * Fixed offset parameter;
