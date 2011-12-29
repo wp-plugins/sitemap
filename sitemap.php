@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: Show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
-Version: 2.5
+Version: 2.6
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -16,19 +16,7 @@ Future features:
 
 add_action('wp_print_styles', 'page_list_add_stylesheet');
 function page_list_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '2.5', 'all' );
-}
-
-if ( !function_exists('pagelist_norm_params') ) {
-	function pagelist_norm_params( $str ) {
-		global $post;
-		$new_str = $str;
-		$new_str = str_replace('this', $post->ID, $new_str); // exclude this page
-		$new_str = str_replace('current', $post->ID, $new_str); // exclude current page
-		$new_str = str_replace('curent', $post->ID, $new_str); // exclude curent page with mistake
-		$new_str = str_replace('parent', $post->post_parent, $new_str); // exclude parent page
-		return $new_str;
-	}
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '2.6', 'all' );
 }
 
 if ( !function_exists('pagelist_shortcode') ) {
@@ -78,7 +66,7 @@ if ( !function_exists('pagelist_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.2.5 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.2.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<ul class="page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
@@ -138,7 +126,7 @@ if ( !function_exists('subpages_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.2.5 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.2.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<ul class="page-list subpages-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
@@ -202,7 +190,7 @@ if ( !function_exists('siblings_shortcode') ) {
 		$list_pages = wp_list_pages( $page_list_args );
 		
 		if ($list_pages) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.2.5 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.2.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<ul class="page-list siblings-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
 		}else{
 			$return = '';
@@ -266,7 +254,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'meta_key'     => $meta_key,
 			'meta_value'   => $meta_value,
 			'authors' => $authors,
-			'parent' => $parent,
+			'parent' => pagelist_norm_params($parent),
 			'exclude_tree' => $exclude_tree,
 			'number' => '', // $number - own counter
 			'offset' => 0, // $offset - own offset
@@ -347,7 +335,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			}
 		}
 		if ($list_pages_html) {
-			$return = "\n".'<!-- powered by Page-list plugin ver.2.5 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+			$return = "\n".'<!-- powered by Page-list plugin ver.2.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 			$return .= '<div class="page-list page-list-ext '.$class.'">'."\n".$list_pages_html."\n".'</div>';
 		}else{
 			$return = '';
@@ -357,6 +345,17 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 	add_shortcode( 'pagelist_ext', 'pagelist_ext_shortcode' );
 }
 
+if ( !function_exists('pagelist_norm_params') ) {
+	function pagelist_norm_params( $str ) {
+		global $post;
+		$new_str = $str;
+		$new_str = str_replace('this', $post->ID, $new_str); // exclude this page
+		$new_str = str_replace('current', $post->ID, $new_str); // exclude current page
+		$new_str = str_replace('curent', $post->ID, $new_str); // exclude curent page with mistake
+		$new_str = str_replace('parent', $post->post_parent, $new_str); // exclude parent page
+		return $new_str;
+	}
+}
 
 if ( !function_exists('page_list_parse_content') ) {
 	function page_list_parse_content($content, $limit_content = 250, $strip_tags = 1) {
