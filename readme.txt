@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 2.6
+Stable tag: 2.7
 
 "Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -86,56 +86,59 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 
 == Changelog ==
 
+= 2.7 =
+* make excerpt link if there is no title;
+
 = 2.6 =
-* Fixed [pagelist_ext] "parent" parameter;
+* fixed [pagelist_ext] "parent" parameter;
 
 = 2.5 =
-* Adding spaces between lines when tags are stripped in [pagelist_ext];
+* fdding spaces between lines when tags are stripped in [pagelist_ext];
 
 = 2.4 =
-* Escaping attributes in title in [pagelist_ext];
+* escaping attributes in title in [pagelist_ext];
 
 = 2.3 =
-* Fixed [pagelist_ext] with showing excerpt of the page if it is not empty, else showing content;
+* fixed [pagelist_ext] with showing excerpt of the page if it is not empty, else showing content;
 
 = 2.2 =
-* Fixed offset parameter;
+* fixed offset parameter;
 
 = 2.1 =
-* Fixed number parameter;
+* fixed number parameter;
 
 = 2.0 =
-* Fixed crash bug with [pagelist_ext] if theme does not have thumbnail feature;
+* fixed crash bug with [pagelist_ext] if theme does not have thumbnail feature;
 
 = 1.9 =
-* Added show_child_count parameter;
-* Added show_meta_key parameter;
+* added show_child_count parameter;
+* added show_meta_key parameter;
 
 = 1.8 =
-* Added screenshots;
-* Improved parameter parsing;
+* added screenshots;
+* improved parameter parsing;
 
 = 1.7 =
-* Added strip_tags parameter;
+* added strip_tags parameter;
 
 = 1.6 =
-* Improved [pagelist_ext] shortcode: added content to list, added toggle show and limit content parameters;
+* improved [pagelist_ext] shortcode: added content to list, added toggle show and limit content parameters;
 
 = 1.5 =
-* Added [pagelist_ext] shortcode - list of pages with featured image;
+* added [pagelist_ext] shortcode - list of pages with featured image;
 
 = 1.4 =
-* Added exclude="current" parameter;
+* added exclude="current" parameter;
 
 = 1.3.0 =
-* Added class to ul elements by default;
-* Added "class" option (thanks to Arvind);
+* added class to ul elements by default;
+* added "class" option (thanks to Arvind);
 
 = 1.2.0 =
-* Added [subpages] and [siblings] shortcodes;
+* added [subpages] and [siblings] shortcodes;
 
 = 1.0.0 =
-* Initial release;
+* initial release;
 
 == Installation ==
 
