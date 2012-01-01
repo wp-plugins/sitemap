@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3
-Stable tag: 2.7
+Stable tag: 2.8
 
 "Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -74,6 +74,7 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 * **post_status** - `[pagelist_ext post_status="publish"]`;
 * **class** - if you want to specify the CSS class for list of pages you can use this shortcode: `[pagelist_ext class="listclass"]`; by default the class is empty (class="");
 * **strip_tags** - if you want to output the content with tags use this shortcode: `[pagelist_ext strip_tags="0"]`; by default the strip_tags is enabled (strip_tags="1");
+* **strip_shortcodes** - if you want to output the content with shortcode use this shortcode: `[pagelist_ext strip_shortcodes="0"]`; by default the strip_shortcodes is enabled (strip_shortcodes="1") and all registered shortcodes are removed;
 * **show_child_count** - if you want to show child count you can use this shortcode: `[pagelist_ext show_child_count="1"]`; by default the child_count is disabled (show_child_count="0"); If show_child_count="1", but count of subpages=0, than child count is not showing;
 * **child_count_template** - if you want to specify the template of child_count you can use this shortcode: `[pagelist_ext show_child_count="1" child_count_template="Subpages: %child_count%"]`; by default child_count_template="Subpages: %child_count%";
 * **show_meta_key** - if you want to show meta key you can use this shortcode: `[pagelist_ext show_meta_key="your_meta_key"]`; by default the show_meta_key is empty (show_meta_key=""); If show_meta_key is enabled, but meta_value is empty, than meta_key is not showing;
@@ -86,6 +87,9 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 
 == Changelog ==
 
+= 2.8 =
+* added "strip_shortcodes" parameter;
+
 = 2.7 =
 * make excerpt link if there is no title;
 
@@ -93,7 +97,7 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 * fixed [pagelist_ext] "parent" parameter;
 
 = 2.5 =
-* fdding spaces between lines when tags are stripped in [pagelist_ext];
+* adding spaces between lines when tags are stripped in [pagelist_ext];
 
 = 2.4 =
 * escaping attributes in title in [pagelist_ext];
