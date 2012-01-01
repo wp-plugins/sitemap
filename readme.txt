@@ -93,7 +93,7 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 * fixed [pagelist_ext] "parent" parameter;
 
 = 2.5 =
-* fdding spaces between lines when tags are stripped in [pagelist_ext];
+* adding spaces between lines when tags are stripped in [pagelist_ext];
 
 = 2.4 =
 * escaping attributes in title in [pagelist_ext];
