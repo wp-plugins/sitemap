@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: Show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
-Version: 2.8
+Version: 2.9
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -16,10 +16,10 @@ Future features:
 
 add_action('wp_print_styles', 'pagelist_add_stylesheet');
 function pagelist_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '2.8', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '2.9', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- powered by Page-list plugin ver.2.8 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- powered by Page-list plugin ver.2.9 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {
@@ -231,6 +231,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'class' => '',
 			'strip_tags' => 1,
 			'strip_shortcodes' => 1,
+			'more_tag' => 1,
 			'show_child_count' => 0,
 			'child_count_template' => 'Subpages: %child_count%',
 			'show_meta_key' => '',
@@ -266,6 +267,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'class' => $class,
 			'strip_tags' => $strip_tags,
 			'strip_shortcodes' => $strip_shortcodes,
+			'more_tag' => $more_tag,
 			'show_child_count' => $show_child_count,
 			'child_count_template' => $child_count_template,
 			'show_meta_key' => $show_meta_key,
@@ -299,16 +301,24 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 					}
 					if( $show_content == 1 ){
 						//$content = apply_filters('the_content', $page->post_content);
-						//$content = str_replace(']]>', ']]&gt;', $content);
+						//$content = str_replace(']]>', ']]&gt;', $content); // both used in default the_content() function
+						
 						if( !empty( $page->post_excerpt ) ){
 							$text_content = $page->post_excerpt;
 						}else{
 							$text_content = $page->post_content;
 						}
-						$content = page_list_parse_content( $text_content, $limit_content, $strip_tags, $strip_shortcodes );
-						if( $show_title == 0 ){ // make excerpt link if there is no title
-							$content = '<a href="'.$link.'">'.$content.'</a>';
+						
+						if ( post_password_required($page) ) {
+							$content = '<!-- password protected -->';
+						}else{
+							$content = page_list_parse_content( $text_content, $limit_content, $strip_tags, $strip_shortcodes, $more_tag );
+							
+							if( $show_title == 0 ){ // make content as a link if there is no title
+								$content = '<a href="'.$link.'">'.$content.'</a>';
+							}
 						}
+						
 						$list_pages_html .= '<div class="page-list-ext-item-content">'.$content.'</div>';
 						
 					}
@@ -366,20 +376,27 @@ if ( !function_exists('pagelist_norm_params') ) {
 }
 
 if ( !function_exists('page_list_parse_content') ) {
-	function page_list_parse_content($content, $limit_content = 250, $strip_tags = 1, $strip_shortcodes = 1) {
-		$output = '';
+	function page_list_parse_content($content, $limit_content = 250, $strip_tags = 1, $strip_shortcodes = 1, $more_tag = 1) {
 		
+		if( $more_tag ){
+			if ( preg_match('/<!--more(.*?)?-->/', $content, $matches) ) {
+				$more_tag = $matches[0];
+				$content = explode($matches[0], $content);
+				$content = $content[0];
+			}
+		}
+
 		if( $strip_shortcodes ){
 			$content = strip_shortcodes( $content );
 		}
 		
 		if( $strip_tags ){
-			$content = str_replace('</', ' </', $content); // <p>aaa</p><p>bbb</p> - adding space between lines
+			$content = str_replace('</', ' </', $content); // <p>line1</p><p>line2</p> - adding space between lines
 			$content = strip_tags($content); // ,'<p>'
 		}
 		
 		if( strlen($content) > $limit_content ){
-			$pos = strpos($content, ' ', $limit_content);
+			$pos = strpos($content, ' ', $limit_content); // find first space position
 			if ($pos !== false) {
 				$first_space_pos = $pos;
 			}else{
