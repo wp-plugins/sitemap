@@ -19,7 +19,7 @@ function pagelist_add_stylesheet() {
 	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '2.9', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- powered by Page-list plugin ver.2.9 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- Page-list plugin v.2.9 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {

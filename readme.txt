@@ -151,5 +151,5 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 
 == Installation ==
 
-1. Install plugin and activate it on the Plugins page;
-2. Add shortcode `[pagelist]`, `[subpages]`, `[siblings]` or `[pagelist_ext]` to page content;
+1. Install and activate the plugin on the Plugins page;
+2. Add shortcodes to pages: `[pagelist]`, `[subpages]`, `[siblings]`, `[pagelist_ext]`;
