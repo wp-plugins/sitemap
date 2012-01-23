@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 2.9
+Stable tag: 3.0
 
 "Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -53,6 +53,7 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 
 = Parameters for [pagelist_ext]: =
 * **show_image** - show or hide featured image `[pagelist_ext show_image="0"]`; by default: show_image="1";
+* **show_first_image** - show or hide first image from content if there is no featured image `[pagelist_ext show_first_image="1"]`; by default: show_first_image="0";
 * **show_title** - show or hide title `[pagelist_ext show_title="0"]`; by default: show_title="1";
 * **show_content** - show or hide content `[pagelist_ext show_content="0"]`; by default: show_content="1";
 * **limit_content** - content is limited by "more-tag" if it is exist or by "limit_content" parameter `[pagelist_ext limit_content="100"]`; by default: limit_content="250";
@@ -87,6 +88,9 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 2. [pagelist_ext] shortcode;
 
 == Changelog ==
+
+= 3.0 =
+* added "show_first_image" parameter for showing first image from content if there is no featured image;
 
 = 2.9 =
 * added "more_tag" parameter and more tag support;
