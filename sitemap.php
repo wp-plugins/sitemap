@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: Show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
-Version: 3.0
+Version: 3.1
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -16,10 +16,10 @@ Future features:
 
 add_action('wp_print_styles', 'pagelist_add_stylesheet');
 function pagelist_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.0', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.1', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.0 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- Sitemap plugin v.3.1 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {
@@ -211,6 +211,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'show_first_image' => 0,
 			'show_title' => 1,
 			'show_content' => 1,
+			'more_tag' => 1,
 			'limit_content' => 250,
 			'image_width' => '50',
 			'image_height' => '50',
@@ -232,7 +233,6 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'class' => '',
 			'strip_tags' => 1,
 			'strip_shortcodes' => 1,
-			'more_tag' => 1,
 			'show_child_count' => 0,
 			'child_count_template' => 'Subpages: %child_count%',
 			'show_meta_key' => '',
@@ -248,6 +248,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'show_first_image' => $show_first_image,
 			'show_title' => $show_title,
 			'show_content' => $show_content,
+			'more_tag' => $more_tag,
 			'limit_content' => $limit_content,
 			'image_width' => $image_width,
 			'image_height' => $image_height,
@@ -269,7 +270,6 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'class' => $class,
 			'strip_tags' => $strip_tags,
 			'strip_shortcodes' => $strip_shortcodes,
-			'more_tag' => $more_tag,
 			'show_child_count' => $show_child_count,
 			'child_count_template' => $child_count_template,
 			'show_meta_key' => $show_meta_key,
@@ -298,17 +298,21 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 							}else{
 								if( $show_first_image == 1 ){
 									$img_scr = get_first_image( $page->post_content );
-									$list_pages_html .= '<div class="page-list-ext-image"><a href="'.$link.'" title="'.esc_attr($page->post_title).'">';
-									$list_pages_html .= '<img src="'.$img_scr.'" width="'.$image_width.'" />'; // not using height="'.$image_height.'" because images could be not square shaped and they will be stretched
-									$list_pages_html .= '</a></div> ';
+									if( !empty( $img_scr ) ){
+										$list_pages_html .= '<div class="page-list-ext-image"><a href="'.$link.'" title="'.esc_attr($page->post_title).'">';
+										$list_pages_html .= '<img src="'.$img_scr.'" width="'.$image_width.'" />'; // not using height="'.$image_height.'" because images could be not square shaped and they will be stretched
+										$list_pages_html .= '</a></div> ';
+									}
 								}
 							}
 						}else{
 							if( $show_first_image == 1 ){
 								$img_scr = get_first_image( $page->post_content );
-								$list_pages_html .= '<div class="page-list-ext-image"><a href="'.$link.'" title="'.esc_attr($page->post_title).'">';
-								$list_pages_html .= '<img src="'.$img_scr.'" width="'.$image_width.'" />'; // not using height="'.$image_height.'" because images could be not square shaped and they will be stretched
-								$list_pages_html .= '</a></div> ';
+								if( !empty( $img_scr ) ){
+									$list_pages_html .= '<div class="page-list-ext-image"><a href="'.$link.'" title="'.esc_attr($page->post_title).'">';
+									$list_pages_html .= '<img src="'.$img_scr.'" width="'.$image_width.'" />'; // not using height="'.$image_height.'" because images could be not square shaped and they will be stretched
+									$list_pages_html .= '</a></div> ';
+								}
 							}
 						}
 					}
@@ -396,34 +400,57 @@ if ( !function_exists('pagelist_norm_params') ) {
 
 if ( !function_exists('page_list_parse_content') ) {
 	function page_list_parse_content($content, $limit_content = 250, $strip_tags = 1, $strip_shortcodes = 1, $more_tag = 1) {
-		
-		if( $more_tag ){
+
+		$more_tag_found = 0;
+		$content_before_more_tag_length = 0;
+
+		if( $more_tag ){ // "more_tag" have higher priority than "limit_content"
 			if ( preg_match('/<!--more(.*?)?-->/', $content, $matches) ) {
+				$more_tag_found = 1;
 				$more_tag = $matches[0];
-				$content = explode($matches[0], $content);
-				$content = $content[0];
+				$content_temp = explode($matches[0], $content);
+				$content_temp = $content_temp[0];
+				$content_before_more_tag_length = strlen($content_temp);
+				$content = substr_replace($content, '###more###', $content_before_more_tag_length, 0);
 			}
 		}
 
-		if( $strip_shortcodes ){
-			$content = strip_shortcodes( $content );
-		}
-		
+		// replace php and comments tags so they do not get stripped
+		//$content = preg_replace("@<\?@", "#?#", $content);
+		//$content = preg_replace("@<!--@", "#!--#", $content); // save html comments
+		// strip tags normally
+		//$content = strip_tags($content);
 		if( $strip_tags ){
 			$content = str_replace('</', ' </', $content); // <p>line1</p><p>line2</p> - adding space between lines
 			$content = strip_tags($content); // ,'<p>'
 		}
-		
-		if( strlen($content) > $limit_content ){
-			$pos = strpos($content, ' ', $limit_content); // find first space position
-			if ($pos !== false) {
-				$first_space_pos = $pos;
-			}else{
-				$first_space_pos = $limit_content;
-			}
-			$content = mb_substr($content, 0, $first_space_pos, 'UTF-8') . '...';
+		// return php and comments tags to their origial form
+		//$content = preg_replace("@#\?#@", "<?", $content);
+		//$content = preg_replace("@#!--#@", "<!--", $content);
+
+		if( $strip_shortcodes ){
+			$content = strip_shortcodes( $content );
 		}
-		
+
+		if( $more_tag && $more_tag_found ){ // "more_tag" have higher priority than "limit_content"
+			$fake_more_pos = strpos($content, '###more###');
+			if( $fake_more_pos === false ) {
+				// substring not found in string and this is strange :)
+			} else {
+				$content = mb_substr($content, 0, $fake_more_pos, 'UTF-8');
+			}
+		}else{
+			if( strlen($content) > $limit_content ){ // limiting content
+				$pos = strpos($content, ' ', $limit_content); // find first space position
+				if ($pos !== false) {
+					$first_space_pos = $pos;
+				}else{
+					$first_space_pos = $limit_content;
+				}
+				$content = mb_substr($content, 0, $first_space_pos, 'UTF-8') . '...';
+			}
+		}
+
 		$output = force_balance_tags($content);
 		return $output;
 	}

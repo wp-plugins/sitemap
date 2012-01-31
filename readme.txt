@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 3.0
+Stable tag: 3.1
 
 "Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -52,10 +52,11 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 * **class** - if you want to specify the CSS class for list of pages you can use this shortcode: `[pagelist class="listclass"]`; by default the class is empty (class="");
 
 = Parameters for [pagelist_ext]: =
-* **show_image** - show or hide featured image `[pagelist_ext show_image="0"]`; by default: show_image="1";
+* **show_image** - show or hide featured image `[pagelist_ext show_image="0"]`; "show_image" have higher priority than "show_first_image"; by default: show_image="1";
 * **show_first_image** - show or hide first image from content if there is no featured image `[pagelist_ext show_first_image="1"]`; by default: show_first_image="0";
 * **show_title** - show or hide title `[pagelist_ext show_title="0"]`; by default: show_title="1";
 * **show_content** - show or hide content `[pagelist_ext show_content="0"]`; by default: show_content="1";
+* **more_tag** - if you want to output all content before and after more tag use this shortcode: `[pagelist_ext more_tag="0"]`; this parameter does not add "more-link" to the end of content, it just cut content before more-tag; "more_tag" parameter have higher priority than "limit_content"; by default the more_tag is enabled (more_tag="1") and showing only content before more tag;
 * **limit_content** - content is limited by "more-tag" if it is exist or by "limit_content" parameter `[pagelist_ext limit_content="100"]`; by default: limit_content="250";
 * **image_width** - width of the image `[pagelist_ext image_width="80"]`; by default: image_width="50";
 * **image_height** - height of the image `[pagelist_ext image_height="80"]`; by default: image_height="50";
@@ -76,7 +77,6 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 * **class** - if you want to specify the CSS class for list of pages you can use this shortcode: `[pagelist_ext class="listclass"]`; by default the class is empty (class="");
 * **strip_tags** - if you want to output the content with tags use this shortcode: `[pagelist_ext strip_tags="0"]`; by default the strip_tags is enabled (strip_tags="1");
 * **strip_shortcodes** - if you want to output the content with shortcode use this shortcode: `[pagelist_ext strip_shortcodes="0"]`; by default the strip_shortcodes is enabled (strip_shortcodes="1") and all registered shortcodes are removed;
-* **more_tag** - if you want to output all content before and after more tag use this shortcode: `[pagelist_ext more_tag="0"]`; by default the more_tag is enabled (more_tag="1") and showing only content before more tag;
 * **show_child_count** - if you want to show child count you can use this shortcode: `[pagelist_ext show_child_count="1"]`; by default the child_count is disabled (show_child_count="0"); If show_child_count="1", but count of subpages=0, than child count is not showing;
 * **child_count_template** - if you want to specify the template of child_count you can use this shortcode: `[pagelist_ext show_child_count="1" child_count_template="Subpages: %child_count%"]`; by default child_count_template="Subpages: %child_count%";
 * **show_meta_key** - if you want to show meta key you can use this shortcode: `[pagelist_ext show_meta_key="your_meta_key"]`; by default the show_meta_key is empty (show_meta_key=""); If show_meta_key is enabled, but meta_value is empty, than meta_key is not showing;
@@ -88,6 +88,10 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 2. [pagelist_ext] shortcode;
 
 == Changelog ==
+
+= 3.1 =
+* fixed bug with empty image in "show_first_image" parameter;
+* added "more_tag" higher priority than "limit_content" (thanks to BobyDimitrov);
 
 = 3.0 =
 * added "show_first_image" parameter for showing first image from content if there is no featured image;
