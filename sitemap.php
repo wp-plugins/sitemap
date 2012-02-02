@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: Show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
-Version: 3.1
+Version: 3.2
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -16,10 +16,10 @@ Future features:
 
 add_action('wp_print_styles', 'pagelist_add_stylesheet');
 function pagelist_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.1', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.2', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- Sitemap plugin v.3.1 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- Sitemap plugin v.3.2 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {
@@ -433,7 +433,7 @@ if ( !function_exists('page_list_parse_content') ) {
 		}
 
 		if( $more_tag && $more_tag_found ){ // "more_tag" have higher priority than "limit_content"
-			$fake_more_pos = strpos($content, '###more###');
+			$fake_more_pos = mb_strpos($content, '###more###', 0, 'UTF-8');
 			if( $fake_more_pos === false ) {
 				// substring not found in string and this is strange :)
 			} else {
