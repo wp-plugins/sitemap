@@ -7,32 +7,30 @@ Requires at least: 3.0
 Tested up to: 3.3.1
 Stable tag: 3.2
 
-"Sitemap" plugin helps you to show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
+Plugin shows list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
 == Description ==
 
-Code moved to [page-list plugin](http://wordpress.org/extend/plugins/page-list/).
+**Code moved to [page-list plugin](http://wordpress.org/extend/plugins/page-list/).**
 
-You can use aditional parameters: `[pagelist depth="2" child_of="4" exclude="6,7,8"]`.
+= shortcodes: =
 
-Shortcodes [pagelist], [subpages], [siblings] are based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Template_Tags/wp_list_pages) function and show hierarchical tree of pages;
-You can use aditional parameters: **`[pagelist depth="2" child_of="4" exclude="6,7,8"]`**.
-Shortcodes [pagelist], [subpages] and [siblings] accept the same parameters. The only difference is that [subpages] and [siblings] not accept  `child_of` parameter, because [subpages] shows subpages to the current page and [siblings] shows subpages to the parent page.
+* **[pagelist]** - hierarchical tree of all pages on site (useful to show sitemap of the site);
+* **[subpages]** - hierarchical tree of subpages to the current page;
+* **[siblings]** - hierarchical tree of sibling pages to the current page;
+* **[pagelist_ext]** - list of pages with featured image and with excerpt (useful to show list of products with images);
 
-Shortcode [pagelist_ext] is based on [get_pages()](http://codex.wordpress.org/Function_Reference/get_pages) function and show list of pages with featured image and with excerpt;
-You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" image_width="50" image_height="50"]`**.
+= aditional parameters examples: =
 
-= Examples: =
-* show hierarchical tree of pages: `[pagelist]`;
-* show hierarchical tree of subpages: `[subpages]`;
-* show hierarchical tree of sibling pages: `[siblings]`;
-* show list of pages with featured image and with excerpt: `[pagelist_ext]`;
+* `[pagelist depth="2" child_of="4" exclude="6,7,8"]`
+* `[pagelist_ext child_of="4" exclude="6,7,8" image_width="50" image_height="50"]`
+* visit [other notes](http://wordpress.org/extend/plugins/sitemap/other_notes/) section to see all params
 
 [Page-list plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
 [CMS WordPress](http://web-profile.com.ua/wordpress/)
 
-== Usage ==
+== Other Notes ==
 
 = Parameters for [pagelist], [subpages] and [siblings]: =
 * **depth** - means how many levels in the hierarchy of pages are to be included in the list, by default depth is unlimited (depth=0), but you can specify it like this: `[pagelist depth="3"]`; If you want to show flat list of pages (not hierarchical tree) you can use this shortcode: `[pagelist depth="-1"]`;
@@ -82,6 +80,25 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 * **show_meta_key** - if you want to show meta key you can use this shortcode: `[pagelist_ext show_meta_key="your_meta_key"]`; by default the show_meta_key is empty (show_meta_key=""); If show_meta_key is enabled, but meta_value is empty, than meta_key is not showing;
 * **meta_template** - if you want to specify the template of meta you can use this shortcode: `[pagelist_ext show_meta_key="your_meta_key" meta_template="Meta: %meta%"]`; by default meta_template="%meta%";
 
+
+== Frequently Asked Questions ==
+
+= How to show the list of posts? =
+
+To show list of posts you can use [List Category Posts](http://wordpress.org/extend/plugins/list-category-posts/other_notes/) plugin.
+
+= On what functions shortcodes are based? =
+
+Shortcodes [pagelist], [subpages], [siblings] are based on [wp_list_pages('title_li=')](http://codex.wordpress.org/Template_Tags/wp_list_pages) function.
+Shortcode [pagelist_ext] is based on [get_pages()](http://codex.wordpress.org/Function_Reference/get_pages) function.
+
+= What is the difference between [pagelist], [subpages] and [siblings]? =
+
+Shortcodes [pagelist], [subpages] and [siblings] accept the same parameters. The only difference is that [subpages] and [siblings] not accept  `child_of` parameter, because [subpages] shows subpages to the current page and [siblings] shows subpages to the parent page.
+
+= How to create sitemap.xml? =
+To create sitemap.xml you can use [Google XML Sitemaps](http://wordpress.org/extend/plugins/google-sitemap-generator/) plugin.
+
 == Screenshots ==
 
 1. [pagelist] shortcode;
@@ -90,7 +107,7 @@ You can use aditional parameters: **`[pagelist_ext child_of="4" exclude="6,7,8" 
 == Changelog ==
 
 = 3.2 =
-* fixed bug "more_tag" and non english chars;
+* fixed bug with "more_tag" and non english chars;
 
 = 3.1 =
 * fixed bug with empty image in "show_first_image" parameter;
