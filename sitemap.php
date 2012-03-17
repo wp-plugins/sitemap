@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: Show list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
-Version: 3.2
+Version: 3.3
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -16,10 +16,10 @@ Future features:
 
 add_action('wp_print_styles', 'pagelist_add_stylesheet');
 function pagelist_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.2', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.3', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- Sitemap plugin v.3.2 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.3 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {
@@ -43,7 +43,7 @@ if ( !function_exists('pagelist_shortcode') ) {
 			'link_after' => '',
 			'class' => ''
 		), $atts ) );
-		
+
 		$page_list_args = array(
 			'depth'        => $depth,
 			'child_of'     => pagelist_norm_params($child_of),
@@ -66,7 +66,7 @@ if ( !function_exists('pagelist_shortcode') ) {
 			'walker' => ''
 		);
 		$list_pages = wp_list_pages( $page_list_args );
-		
+
 		if ($list_pages) {
 			$return = $pagelist_powered_line;
 			$return .= '<ul class="page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
@@ -103,7 +103,7 @@ if ( !function_exists('subpages_shortcode') ) {
 			'link_after' => '',
 			'class' => ''
 		), $atts ) );
-		
+
 		$page_list_args = array(
 			'depth'        => $depth,
 			'child_of'     => $post->ID,
@@ -126,7 +126,7 @@ if ( !function_exists('subpages_shortcode') ) {
 			'walker' => ''
 		);
 		$list_pages = wp_list_pages( $page_list_args );
-		
+
 		if ($list_pages) {
 			$return = $pagelist_powered_line;
 			$return .= '<ul class="page-list subpages-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
@@ -163,11 +163,11 @@ if ( !function_exists('siblings_shortcode') ) {
 			'link_after' => '',
 			'class' => ''
 		), $atts ) );
-		
+
 		if( $exclude == 'current' || $exclude == 'this' ){
 			$exclude = $post->ID;
 		}
-		
+
 		$page_list_args = array(
 			'depth'        => $depth,
 			'child_of'     => $post->post_parent,
@@ -190,7 +190,7 @@ if ( !function_exists('siblings_shortcode') ) {
 			'walker' => ''
 		);
 		$list_pages = wp_list_pages( $page_list_args );
-		
+
 		if ($list_pages) {
 			$return = $pagelist_powered_line;
 			$return .= '<ul class="page-list siblings-page-list '.$class.'">'."\n".$list_pages."\n".'</ul>';
@@ -238,11 +238,11 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'show_meta_key' => '',
 			'meta_template' => '%meta%'
 		), $atts ) );
-		
+
 		if( $child_of == '0' ){
 			$child_of = $post->ID;
 		}
-		
+
 		$page_list_ext_args = array(
 			'show_image' => $show_image,
 			'show_first_image' => $show_first_image,
@@ -297,7 +297,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 								$list_pages_html .= '</a></div> ';
 							}else{
 								if( $show_first_image == 1 ){
-									$img_scr = get_first_image( $page->post_content );
+									$img_scr = page_list_get_first_image( $page->post_content );
 									if( !empty( $img_scr ) ){
 										$list_pages_html .= '<div class="page-list-ext-image"><a href="'.$link.'" title="'.esc_attr($page->post_title).'">';
 										$list_pages_html .= '<img src="'.$img_scr.'" width="'.$image_width.'" />'; // not using height="'.$image_height.'" because images could be not square shaped and they will be stretched
@@ -307,7 +307,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 							}
 						}else{
 							if( $show_first_image == 1 ){
-								$img_scr = get_first_image( $page->post_content );
+								$img_scr = page_list_get_first_image( $page->post_content );
 								if( !empty( $img_scr ) ){
 									$list_pages_html .= '<div class="page-list-ext-image"><a href="'.$link.'" title="'.esc_attr($page->post_title).'">';
 									$list_pages_html .= '<img src="'.$img_scr.'" width="'.$image_width.'" />'; // not using height="'.$image_height.'" because images could be not square shaped and they will be stretched
@@ -317,7 +317,6 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 						}
 					}
 
-					// get_first_image()
 
 					if( $show_title == 1 ){
 						$list_pages_html .= '<h3 class="page-list-ext-title"><a href="'.$link.'" title="'.esc_attr($page->post_title).'">'.esc_attr($page->post_title).'</a></h3>';
@@ -325,25 +324,25 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 					if( $show_content == 1 ){
 						//$content = apply_filters('the_content', $page->post_content);
 						//$content = str_replace(']]>', ']]&gt;', $content); // both used in default the_content() function
-						
+
 						if( !empty( $page->post_excerpt ) ){
 							$text_content = $page->post_excerpt;
 						}else{
 							$text_content = $page->post_content;
 						}
-						
+
 						if ( post_password_required($page) ) {
 							$content = '<!-- password protected -->';
 						}else{
 							$content = page_list_parse_content( $text_content, $limit_content, $strip_tags, $strip_shortcodes, $more_tag );
-							
+
 							if( $show_title == 0 ){ // make content as a link if there is no title
 								$content = '<a href="'.$link.'">'.$content.'</a>';
 							}
 						}
-						
+
 						$list_pages_html .= '<div class="page-list-ext-item-content">'.$content.'</div>';
-						
+
 					}
 					if( $show_child_count == 1 ){
 						$count_subpages = count(get_pages("child_of=".$page->ID));
@@ -456,14 +455,16 @@ if ( !function_exists('page_list_parse_content') ) {
 	}
 }
 
-function get_first_image( $content='' ) {
-	$first_img = '';
-	//ob_start();
-	//ob_end_clean();
-	$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
-	$first_img = $matches[1][0];
-	if(empty($first_img)){ // no image found
+if ( !function_exists('page_list_get_first_image') ) {
+	function page_list_get_first_image( $content='' ) {
 		$first_img = '';
+		//ob_start();
+		//ob_end_clean();
+		$output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $content, $matches);
+		$first_img = $matches[1][0];
+		if(empty($first_img)){ // no image found
+			$first_img = '';
+		}
+		return $first_img;
 	}
-	return $first_img;
 }

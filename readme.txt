@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 3.2
+Stable tag: 3.3
 
 Plugin shows list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
 
@@ -105,6 +105,9 @@ To create sitemap.xml you can use [Google XML Sitemaps](http://wordpress.org/ext
 2. [pagelist_ext] shortcode;
 
 == Changelog ==
+
+= 3.3 =
+* rename "get_first_image" function to "page_list_get_first_image" for avoiding conflicts
 
 = 3.2 =
 * fixed bug with "more_tag" and non english chars;
