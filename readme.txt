@@ -99,6 +99,15 @@ Shortcodes [pagelist], [subpages] and [siblings] accept the same parameters. The
 = How to create sitemap.xml? =
 To create sitemap.xml you can use [Google XML Sitemaps](http://wordpress.org/extend/plugins/google-sitemap-generator/) plugin.
 
+= Is there "more-link" feature in the plugin? =
+No, there is no "more-link" feature in the plugin. Because "more-link":
+
+* **not good for SEO.** Nobody will search your site with the word "more". "rel=nofollow" will not solve it too.
+* **not good for usability.** There is already link on title and "more-link" is an extra no needed element on page. If user cannot understand that the title is the link, than there is a problem in css styles and not in plugin's templates.
+
+I am trying to keep plugin's code and list of pages on the sites light and clean.
+But if you still need "more-link" feature and you will add it by yourself, than you should also change the plugin version to ver.100 (for example) to avoid updating of the plugin, what could override and delete your code.
+
 == Screenshots ==
 
 1. [pagelist] shortcode;
