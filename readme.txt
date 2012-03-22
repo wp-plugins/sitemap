@@ -11,7 +11,7 @@ Stable tag: 3.3
 
 == Description ==
 
-**Code moved to [page-list plugin](http://wordpress.org/extend/plugins/page-list/)** Please, delete Sitemap plugin and instal [Page-list plugin](http://wordpress.org/extend/plugins/page-list/). Don't be afraid, the functionality of these plugins is the same.
+**Code moved to [page-list plugin](http://wordpress.org/extend/plugins/page-list/)** Please, delete Sitemap plugin and install [Page-list plugin](http://wordpress.org/extend/plugins/page-list/). Don't be afraid, the functionality of these plugins is the same.
 
 = shortcodes: =
 
