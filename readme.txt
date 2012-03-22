@@ -7,11 +7,11 @@ Requires at least: 3.0
 Tested up to: 3.3.1
 Stable tag: 3.3
 
-Plugin shows list of pages with [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes.
+[pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
 
 == Description ==
 
-**Code moved to [page-list plugin](http://wordpress.org/extend/plugins/page-list/).**
+**Code moved to [page-list plugin](http://wordpress.org/extend/plugins/page-list/)** Please, delete Sitemap plugin and instal [Page-list plugin](http://wordpress.org/extend/plugins/page-list/). Don't be afraid, the functionality of these plugins is the same.
 
 = shortcodes: =
 
@@ -24,11 +24,14 @@ Plugin shows list of pages with [pagelist], [subpages], [siblings] and [pagelist
 
 * `[pagelist depth="2" child_of="4" exclude="6,7,8"]`
 * `[pagelist_ext child_of="4" exclude="6,7,8" image_width="50" image_height="50"]`
-* visit [other notes](http://wordpress.org/extend/plugins/sitemap/other_notes/) section to see all params
+* [all Page-list params](http://wordpress.org/extend/plugins/page-list/other_notes/)
 
 [Page-list plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
-[CMS WordPress](http://web-profile.com.ua/wordpress/)
+= Try other useful plugins: =
+* [Iframe](http://wordpress.org/extend/plugins/iframe/) - embed iframe with shortcode
+* [Login Logout](http://wordpress.org/extend/plugins/login-logout/) - default Meta widget replacement
+* [Filenames to latin](http://wordpress.org/extend/plugins/filenames-to-latin/) - sanitize filenames to latin during upload
 
 == Other Notes ==
 
@@ -110,8 +113,8 @@ But if you still need "more-link" feature and you will add it by yourself, than 
 
 == Screenshots ==
 
-1. [pagelist] shortcode;
-2. [pagelist_ext] shortcode;
+1. [pagelist] shortcode
+2. [pagelist_ext] shortcode
 
 == Changelog ==
 
@@ -119,77 +122,77 @@ But if you still need "more-link" feature and you will add it by yourself, than 
 * rename "get_first_image" function to "page_list_get_first_image" for avoiding conflicts
 
 = 3.2 =
-* fixed bug with "more_tag" and non english chars;
+* fixed bug with "more_tag" and non english chars
 
 = 3.1 =
-* fixed bug with empty image in "show_first_image" parameter;
-* added "more_tag" higher priority than "limit_content" (thanks to BobyDimitrov);
+* fixed bug with empty image in "show_first_image" parameter
+* added "more_tag" higher priority than "limit_content" (thanks to BobyDimitrov)
 
 = 3.0 =
-* added "show_first_image" parameter for showing first image from content if there is no featured image;
+* added "show_first_image" parameter for showing first image from content if there is no featured image
 
 = 2.9 =
-* added "more_tag" parameter and more tag support;
-* hiding password protected content of the pages;
+* added "more_tag" parameter and more tag support
+* hiding password protected content of the pages
 
 = 2.8 =
-* added "strip_shortcodes" parameter;
+* added "strip_shortcodes" parameter
 
 = 2.7 =
-* make excerpt link if there is no title;
+* make excerpt link if there is no title
 
 = 2.6 =
-* fixed [pagelist_ext] "parent" parameter;
+* fixed [pagelist_ext] "parent" parameter
 
 = 2.5 =
-* adding spaces between lines when tags are stripped in [pagelist_ext];
+* adding spaces between lines when tags are stripped in [pagelist_ext]
 
 = 2.4 =
-* escaping attributes in title in [pagelist_ext];
+* escaping attributes in title in [pagelist_ext]
 
 = 2.3 =
-* fixed [pagelist_ext] with showing excerpt of the page if it is not empty, else showing content;
+* fixed [pagelist_ext] with showing excerpt of the page if it is not empty, else showing content
 
 = 2.2 =
-* fixed offset parameter;
+* fixed offset parameter
 
 = 2.1 =
-* fixed number parameter;
+* fixed number parameter
 
 = 2.0 =
-* fixed crash bug with [pagelist_ext] if theme does not have thumbnail feature;
+* fixed crash bug with [pagelist_ext] if theme does not have thumbnail feature
 
 = 1.9 =
-* added show_child_count parameter;
-* added show_meta_key parameter;
+* added show_child_count parameter
+* added show_meta_key parameter
 
 = 1.8 =
-* added screenshots;
-* improved parameter parsing;
+* added screenshots
+* improved parameter parsing
 
 = 1.7 =
-* added strip_tags parameter;
+* added strip_tags parameter
 
 = 1.6 =
-* improved [pagelist_ext] shortcode: added content to list, added toggle show and limit content parameters;
+* improved [pagelist_ext] shortcode: added content to list, added toggle show and limit content parameters
 
 = 1.5 =
-* added [pagelist_ext] shortcode - list of pages with featured image;
+* added [pagelist_ext] shortcode - list of pages with featured image
 
 = 1.4 =
-* added exclude="current" parameter;
+* added exclude="current" parameter
 
 = 1.3.0 =
-* added class to ul elements by default;
-* added "class" option (thanks to Arvind);
+* added class to ul elements by default
+* added "class" option (thanks to Arvind)
 
 = 1.2.0 =
-* added [subpages] and [siblings] shortcodes;
+* added [subpages] and [siblings] shortcodes
 
 = 1.0.0 =
-* initial release;
+* initial release
 
 == Installation ==
 
-1. Install and activate the plugin on the Plugins page;
-2. Add shortcodes to pages: `[pagelist]`, `[subpages]`, `[siblings]`, `[pagelist_ext]`;
+1. Install and activate the plugin on the Plugins page
+2. Add shortcodes to pages: `[pagelist]`, `[subpages]`, `[siblings]`, `[pagelist_ext]`
