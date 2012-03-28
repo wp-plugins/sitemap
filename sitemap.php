@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
-Version: 3.3
+Version: 3.4
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -11,10 +11,10 @@ Author URI: http://web-profile.com.ua/wordpress/
 
 add_action('wp_print_styles', 'pagelist_add_stylesheet');
 function pagelist_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.3', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.4', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.3 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.4 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {
@@ -314,7 +314,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 
 
 					if( $show_title == 1 ){
-						$list_pages_html .= '<h3 class="page-list-ext-title"><a href="'.$link.'" title="'.esc_attr($page->post_title).'">'.esc_attr($page->post_title).'</a></h3>';
+						$list_pages_html .= '<h3 class="page-list-ext-title"><a href="'.$link.'" title="'.esc_attr($page->post_title).'">'.$page->post_title.'</a></h3>';
 					}
 					if( $show_content == 1 ){
 						//$content = apply_filters('the_content', $page->post_content);

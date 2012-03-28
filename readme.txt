@@ -5,7 +5,7 @@ Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
 Tested up to: 3.3.1
-Stable tag: 3.3
+Stable tag: 3.4
 
 [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
 
@@ -24,7 +24,7 @@ Stable tag: 3.3
 
 * `[pagelist depth="2" child_of="4" exclude="6,7,8"]`
 * `[pagelist_ext child_of="4" exclude="6,7,8" image_width="50" image_height="50"]`
-* [all Page-list params](http://wordpress.org/extend/plugins/page-list/other_notes/)
+* [all Page-list params](http://wordpress.org/extend/plugins/sitemap/other_notes/)
 
 [Page-list plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
@@ -117,6 +117,9 @@ But if you still need "more-link" feature and you will add it by yourself, than 
 2. [pagelist_ext] shortcode
 
 == Changelog ==
+
+= 3.4 =
+* remove esc_attr() from title in [pagelist_ext] shortcode
 
 = 3.3 =
 * rename "get_first_image" function to "page_list_get_first_image" for avoiding conflicts
