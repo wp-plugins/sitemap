@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Sitemap
+Plugin Name: [sitemap]
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
-Version: 3.4
+Version: 3.5
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -11,10 +11,10 @@ Author URI: http://web-profile.com.ua/wordpress/
 
 add_action('wp_print_styles', 'pagelist_add_stylesheet');
 function pagelist_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.4', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.5', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.4 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- [pagelist] plugin v.3.5 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {
@@ -210,7 +210,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'limit_content' => 250,
 			'image_width' => '50',
 			'image_height' => '50',
-			'child_of' => '0',
+			'child_of' => '',
 			'sort_order' => 'ASC',
 			'sort_column' => 'menu_order, post_title',
 			'hierarchical' => 1,
@@ -234,7 +234,7 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'meta_template' => '%meta%'
 		), $atts ) );
 
-		if( $child_of == '0' ){
+		if( $child_of == '' ){ // show subpages if child_of is empty 
 			$child_of = $post->ID;
 		}
 
