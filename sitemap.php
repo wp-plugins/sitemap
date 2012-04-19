@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: [pagelist]
+Plugin Name: [sitemap]
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
 Version: 3.6

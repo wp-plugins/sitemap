@@ -1,4 +1,4 @@
-=== [pagelist] ===
+=== [sitemap] ===
 Contributors: webvitaly
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Tags: page, page-list, pagelist, sitemap, subpages, siblings
