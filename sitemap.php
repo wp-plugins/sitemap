@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: [sitemap]
+Plugin Name: [pagelist]
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
-Version: 3.5
+Version: 3.6
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -11,10 +11,10 @@ Author URI: http://web-profile.com.ua/wordpress/
 
 add_action('wp_print_styles', 'pagelist_add_stylesheet');
 function pagelist_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.5', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.6', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- [pagelist] plugin v.3.5 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {
