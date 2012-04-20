@@ -3,7 +3,7 @@
 Plugin Name: [sitemap]
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
-Version: 3.6
+Version: 3.7
 Author: webvitaly
 Author Email: webvitaly(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
@@ -11,10 +11,10 @@ Author URI: http://web-profile.com.ua/wordpress/
 
 add_action('wp_print_styles', 'pagelist_add_stylesheet');
 function pagelist_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.6', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.7', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.6 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.7 (wordpress.org/extend/plugins/page-list/) -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {
@@ -330,7 +330,8 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 							$content = '<!-- password protected -->';
 						}else{
 							$content = page_list_parse_content( $text_content, $limit_content, $strip_tags, $strip_shortcodes, $more_tag );
-
+							$content = do_shortcode( $content );
+							
 							if( $show_title == 0 ){ // make content as a link if there is no title
 								$content = '<a href="'.$link.'">'.$content.'</a>';
 							}
