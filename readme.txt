@@ -1,11 +1,11 @@
-=== [sitemap] ===
+=== Sitemap ===
 Contributors: webvitaly
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
-Tested up to: 3.3.1
-Stable tag: 3.7
+Tested up to: 3.4.1
+Stable tag: 3.8
 
 [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
 
@@ -28,14 +28,17 @@ Stable tag: 3.7
 
 [Page-list plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
 
-= Try other useful plugins: =
-* [Iframe](http://wordpress.org/extend/plugins/iframe/) - embed iframe with shortcode
-* [Login Logout](http://wordpress.org/extend/plugins/login-logout/) - default Meta widget replacement
-* [Filenames to latin](http://wordpress.org/extend/plugins/filenames-to-latin/) - sanitize filenames to latin during upload
+= useful plugins: =
+* ["Iframe" - embed iframe with shortcode](http://wordpress.org/extend/plugins/iframe/)
+* ["Login Logout" - default Meta widget replacement](http://wordpress.org/extend/plugins/login-logout/) - default Meta widget replacement
+* ["Filenames to latin" - sanitize filenames to latin during upload](http://wordpress.org/extend/plugins/filenames-to-latin/)
 
 == Other Notes ==
 
 = Parameters for [pagelist], [subpages] and [siblings]: =
+* **[pagelist]** - by default shows list of all pages as the hierarchical list;
+* **[subpages]** - by default shows list of subpages to the current page as the hierarchical list;
+* **[siblings]** - by default shows list of sibling pages to the current page as the hierarchical list;
 * **depth** - means how many levels in the hierarchy of pages are to be included in the list, by default depth is unlimited (depth=0), but you can specify it like this: `[pagelist depth="3"]`; If you want to show flat list of pages (not hierarchical tree) you can use this shortcode: `[pagelist depth="-1"]`;
 * **child_of** - if you want to show subpages of the specific page you can use this shortcode: `[pagelist child_of="4"]` where `4` is the ID of the specific page; If you want to show subpages of the current page you can use this shortcodes: `[subpages]` or `[pagelist child_of="current"]` or `[pagelist child_of="this"]`; If you want to show sibling pages of the current page you can use this shortcodes: `[siblings]` or `[pagelist child_of="parent"]`;
 * **exclude** - if you want to exclude some pages from the list you can use this shortcode: `[pagelist exclude="6,7,8"]` where `exclude` parameter accepts comma-separated list of Page IDs; You may exclude current page with this shortcode: `[pagelist exclude="current"]`;
@@ -53,6 +56,7 @@ Stable tag: 3.7
 * **class** - if you want to specify the CSS class for list of pages you can use this shortcode: `[pagelist class="listclass"]`; by default the class is empty (class="");
 
 = Parameters for [pagelist_ext]: =
+* **[pagelist_ext]** - by default shows list of subpages to current page; but if there is no subpages than all pages will be shown;
 * **show_image** - show or hide featured image `[pagelist_ext show_image="0"]`; "show_image" have higher priority than "show_first_image"; by default: show_image="1";
 * **show_first_image** - show or hide first image from content if there is no featured image `[pagelist_ext show_first_image="1"]`; by default: show_first_image="0";
 * **show_title** - show or hide title `[pagelist_ext show_title="0"]`; by default: show_title="1";
@@ -117,6 +121,9 @@ But if you still need "more-link" feature and you will add it by yourself, than 
 2. [pagelist_ext] shortcode
 
 == Changelog ==
+
+= 3.8 =
+* fixed default [pagelist_ext] behaviour - showing all pages if there is no subpages
 
 = 3.7 =
 * executing shortcodes in [pagelist_ext  strip_shortcodes="0"] in content

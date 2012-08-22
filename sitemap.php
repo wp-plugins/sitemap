@@ -1,20 +1,20 @@
 <?php
 /*
-Plugin Name: [sitemap]
+Plugin Name: Sitemap
 Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
 Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
-Version: 3.7
+Version: 3.8
 Author: webvitaly
-Author Email: webvitaly(at)gmail.com
+Author Email: vitalymylo(at)gmail.com
 Author URI: http://web-profile.com.ua/wordpress/
 */
 
 add_action('wp_print_styles', 'pagelist_add_stylesheet');
 function pagelist_add_stylesheet() {
-	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.7', 'all' );
+	wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '3.8', 'all' );
 }
 
-$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.7 (wordpress.org/extend/plugins/page-list/) -->'."\n";
+$pagelist_powered_line = "\n".'<!-- Page-list plugin v.3.8 [ wordpress.org/extend/plugins/page-list/ ] -->'."\n";
 
 if ( !function_exists('pagelist_shortcode') ) {
 	function pagelist_shortcode( $atts ) {
@@ -270,7 +270,42 @@ if ( !function_exists('pagelist_ext_shortcode') ) {
 			'show_meta_key' => $show_meta_key,
 			'meta_template' => $meta_template
 		);
+		$page_list_ext_args_all = array(
+			'show_image' => $show_image,
+			'show_first_image' => $show_first_image,
+			'show_title' => $show_title,
+			'show_content' => $show_content,
+			'more_tag' => $more_tag,
+			'limit_content' => $limit_content,
+			'image_width' => $image_width,
+			'image_height' => $image_height,
+			'child_of' => 0, // for showing all pages
+			'sort_order' => $sort_order,
+			'sort_column' => $sort_column,
+			'hierarchical' => $hierarchical,
+			'exclude' => pagelist_norm_params($exclude),
+			'include' => $include,
+			'meta_key'     => $meta_key,
+			'meta_value'   => $meta_value,
+			'authors' => $authors,
+			'parent' => pagelist_norm_params($parent),
+			'exclude_tree' => $exclude_tree,
+			'number' => '', // $number - own counter
+			'offset' => 0, // $offset - own offset
+			'post_type' => $post_type,
+			'post_status' => $post_status,
+			'class' => $class,
+			'strip_tags' => $strip_tags,
+			'strip_shortcodes' => $strip_shortcodes,
+			'show_child_count' => $show_child_count,
+			'child_count_template' => $child_count_template,
+			'show_meta_key' => $show_meta_key,
+			'meta_template' => $meta_template
+		);
 		$list_pages = get_pages( $page_list_ext_args );
+		if( count( $list_pages ) == 0 ){ // if there is no subpages
+			$list_pages = get_pages( $page_list_ext_args_all ); // we are showing all pages
+		}
 		$list_pages_html = '';
 		$count = 0;
 		$offset_count = 0;
