@@ -1,4 +1,12 @@
-/* Page-list plugin styles (wordpress.org/extend/plugins/page-list/) */
+/*
+Page-list plugin
+http://wordpress.org/extend/plugins/page-list/
+*/
+
+/* default styles for [pagelist], [subpages], [siblings] */
+.page-list .current_page_item > a {
+	font-weight: bold; /* hilite active item */
+}
 
 /* default styles for [pagelist_ext] */
 .page-list-ext .page-list-ext-item {
@@ -12,9 +20,4 @@
 }
 .page-list-ext .page-list-ext-title {
 	clear: none;
-}
-
-/* default styles for [pagelist], [subpages], [siblings] */
-.page-list .current_page_item a {
-	font-weight: bold; /* hilite active item */
 }

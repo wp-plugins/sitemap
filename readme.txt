@@ -1,11 +1,12 @@
 === Sitemap ===
 Contributors: webvitaly
-Plugin URI: http://web-profile.com.ua/wordpress/plugins/page-list/
+Donate link: http://web-profile.com.ua/donate/
 Tags: page, page-list, pagelist, sitemap, subpages, siblings
-Author URI: http://web-profile.com.ua/wordpress/
 Requires at least: 3.0
-Tested up to: 3.4.1
-Stable tag: 3.8
+Tested up to: 3.5
+Stable tag: 4.0
+License: GPLv2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
 
@@ -13,25 +14,26 @@ Stable tag: 3.8
 
 **Code moved to [page-list plugin](http://wordpress.org/extend/plugins/page-list/)** Please, delete Sitemap plugin and install [Pagelist plugin](http://wordpress.org/extend/plugins/page-list/). Don't be afraid, the functionality of these plugins is the same.
 
+
 = shortcodes: =
 
 * **[pagelist]** - hierarchical tree of all pages on site (useful to show sitemap of the site);
 * **[subpages]** - hierarchical tree of subpages to the current page;
 * **[siblings]** - hierarchical tree of sibling pages to the current page;
-* **[pagelist_ext]** - list of pages with featured image and with excerpt (useful to show list of products with images);
+* **[pagelist_ext]** - list of pages with featured image and with excerpt;
 
 = aditional parameters examples: =
 
 * `[pagelist depth="2" child_of="4" exclude="6,7,8"]`
 * `[pagelist_ext child_of="4" exclude="6,7,8" image_width="50" image_height="50"]`
-* [all Page-list params](http://wordpress.org/extend/plugins/sitemap/other_notes/)
+* **[all Page-list params](http://wordpress.org/extend/plugins/page-list/other_notes/)**
 
-[Page-list plugin page](http://web-profile.com.ua/wordpress/plugins/page-list/)
+**[Page-list support page](http://web-profile.com.ua/wordpress/plugins/page-list/)**
 
-= useful plugins: =
-* ["Iframe" - embed iframe with shortcode](http://wordpress.org/extend/plugins/iframe/)
-* ["Login Logout" - default Meta widget replacement](http://wordpress.org/extend/plugins/login-logout/) - default Meta widget replacement
-* ["Filenames to latin" - sanitize filenames to latin during upload](http://wordpress.org/extend/plugins/filenames-to-latin/)
+= Useful plugins: =
+* ["Iframe" - embed iframe with shortcode](http://wordpress.org/extend/plugins/iframe/ "embed iframe")
+* ["Anti-spam" - block spam in comments](http://wordpress.org/extend/plugins/anti-spam/ "no spam, no captcha")
+* ["Filenames to latin" - sanitize filenames to latin during upload](http://wordpress.org/extend/plugins/filenames-to-latin/ "sanitize filenames to latin")
 
 == Other Notes ==
 
@@ -107,13 +109,13 @@ Shortcodes [pagelist], [subpages] and [siblings] accept the same parameters. The
 To create sitemap.xml you can use [Google XML Sitemaps](http://wordpress.org/extend/plugins/google-sitemap-generator/) plugin.
 
 = Is there "more-link" feature in the plugin? =
-No, there is no "more-link" feature in the plugin. Because "more-link":
+No, there is no "more-link" feature in the plugin. Because "[more-link](http://web-profile.com.ua/web/web-principles/more-link/)":
 
-* **not good for SEO.** Nobody will search your site with the word "more". "rel=nofollow" will not solve it too.
-* **not good for usability.** There is already link on title and "more-link" is an extra no needed element on page. If user cannot understand that the title is the link, than there is a problem in css styles and not in plugin's templates.
+* **bad for SEO.** Nobody will search your site with the word "more". "rel=nofollow" will not solve it too.
+* **bad for usability.** There is already link on title and "more-link" is an extra no needed element on page. If user cannot understand that the title is the link, than there is a problem in css styles and not in plugin's templates.
 
-I am trying to keep plugin's code and list of pages on the sites light and clean.
-But if you still need "more-link" feature and you will add it by yourself, than you should also change the plugin version to ver.100 (for example) to avoid updating of the plugin, what could override and delete your code.
+= What to do if you need to change the plugin's code? =
+When you changed the plugin's code you should also change the plugin's version to '100' to avoid updates, which could override and delete your code.
 
 == Screenshots ==
 
@@ -121,6 +123,11 @@ But if you still need "more-link" feature and you will add it by yourself, than 
 2. [pagelist_ext] shortcode
 
 == Changelog ==
+
+= 4.0 - 2012.10.30 =
+* remove conflict between Pagelist and Sitemap plugins
+* remove preg_match_all notice
+* minor changes
 
 = 3.8 =
 * fixed default [pagelist_ext] behaviour - showing all pages if there is no subpages
