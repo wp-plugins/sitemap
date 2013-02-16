@@ -4,7 +4,7 @@ Donate link: http://web-profile.com.ua/donate/
 Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Requires at least: 3.0
 Tested up to: 3.5.1
-Stable tag: 4.1
+Stable tag: 4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -124,6 +124,10 @@ When you changed the plugin's code you should also change the plugin's version t
 2. [pagelist_ext] shortcode
 
 == Changelog ==
+
+= 4.2 - 2013.02.16 =
+* fix in css styles (clearfix added to .page-list-ext)
+* make default image size 150x150 like default thumbnail size
 
 = 4.1 - 2013.01.27 =
 * change the type of output the image thumbnail in [pagelist_ext] shortcode

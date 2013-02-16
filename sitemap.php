@@ -3,7 +3,7 @@
 Plugin Name: Sitemap
 Plugin URI: http://wordpress.org/extend/plugins/page-list/
 Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
-Version: 4.1
+Version: 4.2
 Author: webvitaly
 Author URI: http://profiles.wordpress.org/webvitaly/
 License: GPLv2 or later
@@ -11,13 +11,13 @@ License: GPLv2 or later
 
 if ( !function_exists('pagelist_unqprfx_add_stylesheet') ) {
 	function pagelist_unqprfx_add_stylesheet() {
-		wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '4.1', 'all' );
+		wp_enqueue_style( 'page-list-style', plugins_url( '/css/page-list.css', __FILE__ ), false, '4.2', 'all' );
 	}
 	add_action('wp_print_styles', 'pagelist_unqprfx_add_stylesheet');
 }
 
 
-$pagelist_unqprfx_powered_line = "\n".'<!-- Page-list plugin v.4.1 wordpress.org/extend/plugins/page-list/ -->'."\n";
+$pagelist_unqprfx_powered_line = "\n".'<!-- Page-list plugin v.4.2 wordpress.org/extend/plugins/page-list/ -->'."\n";
 
 
 if ( !function_exists('pagelist_unqprfx_shortcode') ) {
@@ -215,8 +215,8 @@ if ( !function_exists('pagelist_unqprfx_ext_shortcode') ) {
 			'show_content' => 1,
 			'more_tag' => 1,
 			'limit_content' => 250,
-			'image_width' => '50',
-			'image_height' => '50',
+			'image_width' => '150',
+			'image_height' => '150',
 			'child_of' => '',
 			'sort_order' => 'ASC',
 			'sort_column' => 'menu_order, post_title',
