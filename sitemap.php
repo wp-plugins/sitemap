@@ -5,7 +5,7 @@ Plugin URI: http://wordpress.org/extend/plugins/page-list/
 Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
 Version: 4.2
 Author: webvitaly
-Author URI: http://profiles.wordpress.org/webvitaly/
+Author URI: http://web-profile.com.ua/wordpress/plugins/
 License: GPLv2 or later
 */
 
@@ -516,9 +516,9 @@ if ( !function_exists('pagelist_unqprfx_get_first_image') ) {
 }
 
 if ( !function_exists('pagelist_unqprfx_plugin_meta') ) {
-	function pagelist_unqprfx_plugin_meta( $links, $file ) { // add 'Support' and 'Donate' links to plugin meta row
+	function pagelist_unqprfx_plugin_meta( $links, $file ) { // add 'Plugin page' and 'Donate' links to plugin meta row
 		if ( strpos( $file, 'sitemap.php' ) !== false ) {
-			$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/page-list/" title="Need help?">' . __('Support') . '</a>' ) );
+			$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/wordpress/plugins/page-list/" title="Plugin page">' . __('Page-list') . '</a>' ) );
 			$links = array_merge( $links, array( '<a href="http://web-profile.com.ua/donate/" title="Support the development">' . __('Donate') . '</a>' ) );
 		}
 		return $links;
