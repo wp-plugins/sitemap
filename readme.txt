@@ -12,10 +12,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-**Code moved to [page-list plugin](http://wordpress.org/extend/plugins/page-list/)** Please, delete Sitemap plugin and install [Pagelist plugin](http://wordpress.org/extend/plugins/page-list/). Don't be afraid, the functionality of these plugins is the same.
+**Code moved to [page-list plugin](http://wordpress.org/plugins/page-list/)** Please, delete Sitemap plugin and install [Pagelist plugin](http://wordpress.org/plugins/page-list/). Don't be afraid, the functionality of these plugins is the same.
 
 **[Page-list](http://web-profile.com.ua/wordpress/plugins/page-list/ "Plugin page")** |
-**[all Page-list params](http://wordpress.org/extend/plugins/page-list/other_notes/)** |
+**[all Page-list params](http://wordpress.org/plugins/page-list/other_notes/)** |
 **[Donate](http://web-profile.com.ua/donate/ "Support the development")**
 
 = shortcodes: =
@@ -29,12 +29,12 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 * `[pagelist child_of="4" depth="2" exclude="6,7,8"]`
 * `[pagelist_ext child_of="4" exclude="6,7,8" image_width="50" image_height="50"]`
-* **[all Page-list params](http://wordpress.org/extend/plugins/page-list/other_notes/)**
+* **[all Page-list params](http://wordpress.org/plugins/page-list/other_notes/)**
 
-= Useful plugins: =
-* ["Anti-spam" - block spam in comments](http://wordpress.org/extend/plugins/anti-spam/ "no spam, no captcha")
-* ["Iframe" - embed iframe with shortcode](http://wordpress.org/extend/plugins/iframe/ "embed iframe")
-* ["Filenames to latin" - sanitize filenames to latin during upload](http://wordpress.org/extend/plugins/filenames-to-latin/ "sanitize filenames to latin")
+= Useful: =
+* ["Anti-spam" - block spam in comments](http://wordpress.org/plugins/anti-spam/ "no spam, no captcha")
+* ["Iframe" - embed iframe with shortcode](http://wordpress.org/plugins/iframe/ "embed iframe")
+* ["activetab" - responsive light and clean theme](http://wordpress.org/themes/activetab "responsive light and clean theme")
 
 == Other Notes ==
 
@@ -95,7 +95,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 = How to show the list of posts? =
 
-To show list of posts you can use [List Category Posts](http://wordpress.org/extend/plugins/list-category-posts/other_notes/) plugin.
+To show list of posts you can use [List Category Posts](http://wordpress.org/plugins/list-category-posts/) plugin.
 
 = On what functions shortcodes are based? =
 
@@ -107,7 +107,7 @@ Shortcode [pagelist_ext] is based on [get_pages()](http://codex.wordpress.org/Fu
 Shortcodes [pagelist], [subpages] and [siblings] accept the same parameters. The only difference is that [subpages] and [siblings] not accept `child_of` parameter, because [subpages] shows subpages to the current page and [siblings] shows subpages to the parent page.
 
 = How to create sitemap.xml? =
-To create sitemap.xml you can use [Google XML Sitemaps](http://wordpress.org/extend/plugins/google-sitemap-generator/) plugin.
+To create sitemap.xml you can use [Google XML Sitemaps](http://wordpress.org/plugins/google-sitemap-generator/) plugin.
 
 = Is there "more-link" feature in the plugin? =
 No, there is no "more-link" feature in the plugin. Because "[more-link](http://web-profile.com.ua/web/web-principles/more-link/)":

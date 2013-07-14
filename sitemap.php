@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Sitemap
-Plugin URI: http://wordpress.org/extend/plugins/page-list/
+Plugin URI: http://wordpress.org/plugins/page-list/
 Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
 Version: 4.2
 Author: webvitaly
@@ -17,7 +17,7 @@ if ( !function_exists('pagelist_unqprfx_add_stylesheet') ) {
 }
 
 
-$pagelist_unqprfx_powered_line = "\n".'<!-- Page-list plugin v.4.2 wordpress.org/extend/plugins/page-list/ -->'."\n";
+$pagelist_unqprfx_powered_line = "\n".'<!-- Page-list plugin v.4.2 wordpress.org/plugins/page-list/ -->'."\n";
 
 
 if ( !function_exists('pagelist_unqprfx_shortcode') ) {
