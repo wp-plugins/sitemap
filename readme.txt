@@ -3,7 +3,7 @@ Contributors: webvitaly
 Donate link: http://web-profile.com.ua/donate/
 Tags: page, page-list, pagelist, sitemap, subpages, siblings
 Requires at least: 3.0
-Tested up to: 3.7.1
+Tested up to: 3.8.1
 Stable tag: 4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -32,8 +32,8 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 * **[all Page-list params](http://wordpress.org/plugins/page-list/other_notes/)**
 
 = Useful: =
-* ["activetab" - responsive clean theme](http://wordpress.org/themes/activetab "responsive clean theme")
 * ["Anti-spam" - block spam in comments](http://wordpress.org/plugins/anti-spam/ "no spam, no captcha")
+* ["Security-protection" - blocks brute-force attacks](http://wordpress.org/plugins/security-protection/ "stops brute-force attacks")
 * ["Iframe" - embed iframe with shortcode](http://wordpress.org/plugins/iframe/ "embed iframe")
 
 == Other Notes ==
