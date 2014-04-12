@@ -6,7 +6,7 @@ Description: [pagelist], [subpages], [siblings] and [pagelist_ext] shortcodes
 Version: 4.2
 Author: webvitaly
 Author URI: http://web-profile.com.ua/wordpress/plugins/
-License: GPLv2 or later
+License: GPLv3
 */
 
 if ( !function_exists('pagelist_unqprfx_add_stylesheet') ) {
@@ -137,8 +137,6 @@ if ( !function_exists('subpages_unqprfx_shortcode') ) {
 	}
 	add_shortcode( 'subpages', 'subpages_unqprfx_shortcode' );
 	add_shortcode( 'sub_pages', 'subpages_unqprfx_shortcode' );
-	add_shortcode( 'sub-pages', 'subpages_unqprfx_shortcode' ); // not good (Shortcode names should be all lowercase and use all letters, but numbers and underscores (not dashes!) should work fine too.)
-	add_shortcode( 'children', 'subpages_unqprfx_shortcode' );
 }
 
 
