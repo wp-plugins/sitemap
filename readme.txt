@@ -14,6 +14,7 @@ License URI: http://www.gnu.org/licenses/gpl.html
 
 **Code moved to [page-list plugin](http://wordpress.org/plugins/page-list/)** Please, delete Sitemap plugin and install [Pagelist plugin](http://wordpress.org/plugins/page-list/). Don't be afraid, the functionality of these plugins is the same.
 
+**[WordPress Pro plugins](http://codecanyon.net/popular_item/by_category?category=wordpress&ref=webvitaly "WordPress Pro plugins")** |
 **[Page-list](http://web-profile.com.ua/wordpress/plugins/page-list/ "Plugin page")** |
 **[all Page-list params](http://wordpress.org/plugins/page-list/other_notes/)** |
 **[Donate](http://web-profile.com.ua/donate/ "Support the development")**
